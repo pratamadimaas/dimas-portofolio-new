@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, Check, ArrowDownRight } from 'lucide-react';
+import { Copy, Check, ArrowDownRight, Linkedin } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 import ThreeCanvas from './ThreeCanvas';
 import TerminalHUD from './TerminalHUD';
@@ -69,6 +69,15 @@ export default function HeroSection({ isDark }) {
               Explore Systems
               <ArrowDownRight size={15} />
             </MagneticButton>
+            <a
+              href="https://linkedin.com/in/pratamadimaas"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-titanium-border dark:border-obsidian-border text-titanium-muted dark:text-obsidian-muted hover:text-slate-900 dark:hover:text-zinc-100 hover:border-slate-400 dark:hover:border-zinc-500 transition-colors duration-200"
+            >
+              <Linkedin size={16} strokeWidth={1.8} />
+            </a>
           </motion.div>
 
           <motion.div

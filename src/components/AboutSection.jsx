@@ -54,7 +54,7 @@ export default function AboutSection() {
           className="surface rounded-2xl p-7"
         >
           <p className="label-mono mb-3">SECTOR</p>
-          <p className="text-2xl font-display font-semibold">Public Treasury</p>
+          <p className="text-2xl font-display font-semibold">State Treasury</p>
           <p className="text-sm text-titanium-muted dark:text-obsidian-muted mt-1">
             Kementerian Keuangan RI / Ditjen Perbendaharaan
           </p>

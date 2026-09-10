@@ -176,7 +176,7 @@ export const education = [
   {
     period: '2018 — 2019',
     title: 'Politeknik Keuangan Negara STAN',
-    role: 'Diploma 1 — Public Treasury',
+    role: 'Diploma 1 — State Treasury',
     detail: 'Graduated with a 3.50 GPA. Completed foundational training in state budget cycles, fund disbursement, and public cash management.',
     badge: 'Foundational Academy',
   },
