@@ -183,7 +183,7 @@ export const education = [
   {
     period: '2017 — 2018',
     title: 'Universitas Sebelas Maret (UNS)',
-    role: 'Informatics Engineering',
+    role: 'Informatics',
     detail: 'Completed coursework with a 3.56 GPA. Established rigorous foundations in algorithms, data structures, C, and Python.',
     badge: 'Foundational CS',
   },
