@@ -81,7 +81,7 @@ export const projects = [
     name: 'SMART KPPN Kolaka',
     subtitle: 'Guest Administration & Employee Leave Portal',
     tags: ['FULL-STACK', 'ENTERPRISE'],
-    metric: 'SK Inovasi',
+    metric: 'Leave & Guest System',
     description:
       'Internal enterprise portal engineered to govern stakeholder consultations, visitor reception registries, and employee leave requests. Eliminates manual paperwork, mitigates data entry errors, and establishes transparent audit trails across KPPN Kolaka.',
     stack: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
