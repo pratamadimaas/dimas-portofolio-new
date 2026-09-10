@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhamad Dimas Pratama — Lead Full-Stack Engineer</title>
+    <meta
+      name="description"
+      content="Muhamad Dimas Pratama — Lead Full-Stack Engineer & Enterprise Automation Architect. Sistem transaksi kritis, automasi anggaran, dan arsitektur database multi-cabang."
+    />
+    <script>
+      // Anti-FOUC: resolve theme before first paint.
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var theme =
+            stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          if (theme === 'light') {
+            document.documentElement.classList.add('light');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
