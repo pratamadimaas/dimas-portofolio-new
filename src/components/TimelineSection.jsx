@@ -57,8 +57,8 @@ export default function TimelineSection() {
       </motion.h2>
 
       <div className="grid md:grid-cols-2 gap-14 md:gap-10">
-        <TimelineColumn heading="Pengalaman Kerja" entries={experience} />
-        <TimelineColumn heading="Pendidikan" entries={education} />
+        <TimelineColumn heading="Experience" entries={experience} />
+        <TimelineColumn heading="Education" entries={education} />
       </div>
     </section>
   );

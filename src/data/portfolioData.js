@@ -152,11 +152,20 @@ export const experience = [
   {
     period: 'Sep 2020 — Aug 2022',
     title: 'KPPN Masohi',
-    role: 'Treasury Operations Staff',
-    detail: 'Executed state budget fund disbursements, verified regional financial compliance, and automated internal spreadsheet workflows.',
+    role: 'General Affairs & Household Staff',
+    detail: 'Handled procurement and payment workflows, office logistics and protocol, Public Information Disclosure (KIP) services, and social media, while monitoring infrastructure readiness.',
     badge: 'Regional Deployment',
   },
+{
+  period: 'Dec 2019 — Aug 2020',
+  title: 'KPPN Serang',
+  role: 'Bank Staff',
+  detail:
+    'Supported government treasury payment operations, with a focus on PPR recording and returned payment (retur) processing. Reviewed SP2D and beneficiary data, identified payment discrepancies, coordinated data corrections with spending units, and supported the reprocessing of returned funds through the treasury system.',
+  badge: 'On The Job Training',
+},
 ];
+
 
 export const education = [
   {
