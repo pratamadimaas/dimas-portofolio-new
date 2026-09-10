@@ -4,15 +4,17 @@ import { Canvas, useFrame } from '@react-three/fiber';
 /**
  * Interactive geometric wireframe core.
  * Rotates gently on its own axis, and tilts toward the cursor with damped
- * inertia. Renders a low-poly icosahedron wireframe layered with a thinner
- * torus-knot ring for a "blueprint schematic" read rather than a decorative
- * orb. Automatically disabled on touch / low-power devices.
+ * inertia. On touch devices it tilts toward a slow idle drift instead of
+ * pointer tracking. Renders a low-poly icosahedron wireframe layered with a
+ * thinner torus-knot ring for a "blueprint schematic" read rather than a
+ * decorative orb.
  */
-function WireframeCore({ color }) {
+function WireframeCore({ color, isTouch }) {
   const groupRef = useRef();
   const target = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (isTouch) return; // no pointer tracking on touch devices
     const handleMove = (e) => {
       const nx = (e.clientX / window.innerWidth) * 2 - 1;
       const ny = (e.clientY / window.innerHeight) * 2 - 1;
@@ -20,14 +22,14 @@ function WireframeCore({ color }) {
     };
     window.addEventListener('pointermove', handleMove);
     return () => window.removeEventListener('pointermove', handleMove);
-  }, []);
+  }, [isTouch]);
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
     // Idle auto-rotation
     groupRef.current.rotation.y += delta * 0.09;
 
-    // Damped approach toward cursor-derived tilt
+    // Damped approach toward cursor-derived tilt (or resting pose on touch)
     const damp = 1 - Math.pow(0.001, delta);
     groupRef.current.rotation.x += (target.current.x - groupRef.current.rotation.x) * damp;
     groupRef.current.rotation.z += (target.current.y * 0.2 - groupRef.current.rotation.z) * damp;
@@ -51,23 +53,30 @@ function WireframeCore({ color }) {
   );
 }
 
-function useIsLowPower() {
-  const [low, setLow] = useState(false);
+/**
+ * Detects touch/coarse-pointer devices (used to tune render quality and
+ * disable pointer-tracking) and genuinely low-power hardware (very few CPU
+ * cores) which falls back to a static SVG instead of WebGL entirely.
+ */
+function useDeviceProfile() {
+  const [profile, setProfile] = useState({ isTouch: false, isVeryLowPower: false });
+
   useEffect(() => {
-    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
-    const narrow = window.innerWidth < 768;
-    const fewCores = (navigator.hardwareConcurrency || 8) <= 4;
-    setLow(coarsePointer && (narrow || fewCores));
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const fewCores = (navigator.hardwareConcurrency || 8) <= 2;
+    setProfile({ isTouch, isVeryLowPower: fewCores });
   }, []);
-  return low;
+
+  return profile;
 }
 
 export default function ThreeCanvas({ isDark = true, className = '' }) {
-  const lowPower = useIsLowPower();
+  const { isTouch, isVeryLowPower } = useDeviceProfile();
   const color = useMemo(() => (isDark ? '#3b82f6' : '#0f172a'), [isDark]);
 
-  if (lowPower) {
-    // Static schematic fallback — keeps the layout without spending a GPU budget.
+  if (isVeryLowPower) {
+    // Static schematic fallback — only for genuinely low-end hardware,
+    // keeps the layout without spending a GPU budget it can't afford.
     return (
       <div
         className={`flex items-center justify-center ${className}`}
@@ -90,10 +99,10 @@ export default function ThreeCanvas({ isDark = true, className = '' }) {
     <div className={className} aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 4.2], fov: 45 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true }}
+        dpr={isTouch ? [1, 1] : [1, 1.5]}
+        gl={{ antialias: !isTouch, alpha: true, powerPreference: 'low-power' }}
       >
-        <WireframeCore color={color} />
+        <WireframeCore color={color} isTouch={isTouch} />
       </Canvas>
     </div>
   );
