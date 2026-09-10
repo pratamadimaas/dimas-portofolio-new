@@ -45,7 +45,7 @@ export default function ContactSection() {
             Secure transmission
           </h2>
           <p className="mt-3 text-slate-600 dark:text-zinc-400 leading-relaxed max-w-sm text-sm md:text-base">
-            Untuk proyek enterprise, konsultasi arsitektur perbendaharaan, atau inisiatif rekayasa software — kirim pesan langsung.
+            For enterprise projects, architecture consulting, or software engineering initiatives, send a message directly.
           </p>
 
           <a 
