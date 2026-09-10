@@ -7,7 +7,7 @@ export const identity = {
   summary:
     'Software Engineer and public treasury practitioner at the Directorate General of Treasury (Ministry of Finance of Indonesia). Fusing public sector accounting principles, statutory budget execution frameworks, and modern software engineering architectures to transform complex manual workflows into high-throughput automated systems.',
   credential:
-  'PKN STAN alumnus (Asset Management & Treasury) and self-funded Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning, with hands-on depth in Python, SQL, Laravel, and JavaScript.',
+  'PKN STAN alumnus (Asset Management & Treasury) and self-funded Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
     { label: 'Review Latency Cut', value: 'Days to Hours' },
     { label: 'Admin Overhead Reduced', value: '>80%' },
@@ -22,7 +22,7 @@ export const identity = {
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Python (Flask)', 'Laragon', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
   },
   {
     group: 'UI & Creative Engineering',
