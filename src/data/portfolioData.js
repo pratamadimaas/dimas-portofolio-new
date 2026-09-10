@@ -22,7 +22,7 @@ export const identity = {
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Laragon', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control'],
   },
   {
     group: 'UI & Creative Engineering',
@@ -30,11 +30,11 @@ export const stackMatrix = [
   },
  {
   group: 'Data Intelligence & Desktop OOP',
-  items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation'],
+  items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation', 'Tableau', 'Google Apps Script', 'Google Looker Studio'],
 },
   {
     group: 'Databases & Infrastructure',
-    items: ['MySQL (Schema Design & Query Optimization)', 'MongoDB', 'Ubuntu VPS', 'Nginx Deployment'],
+    items: ['MySQL (Schema Design & Query Optimization)', 'SQL Server', 'MongoDB', 'Ubuntu VPS', 'Nginx Deployment', 'phpMyAdmin'],
   },
 ];
 
