@@ -10,20 +10,33 @@ export default function ProjectsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-12 max-w-2xl"
+        className="mb-12 md:mb-16 max-w-2xl"
       >
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+        <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-500 dark:text-blue-400">
+          Selected Work
+        </span>
+        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
           Production systems, not prototypes
         </h2>
-       <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
-  Seven systems, five of them live and publicly accessible right now. Two are desktop
-  tools you can connect with me about directly.
-</p>
+        <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
+          Nine systems built across public treasury operations, automation, and full-stack
+          products six live and publicly accessible right now, three desktop or client tools
+          you can connect with me about directly.
+        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[minmax(180px,auto)] gap-4">
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-stretch">
+        {projects.map((p, i) => (
+          <motion.div
+            key={p.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="h-full"
+          >
+            <ProjectCard project={p} />
+          </motion.div>
         ))}
       </div>
     </section>

@@ -114,6 +114,31 @@ export const projects = [
     url: 'https://cleardraft.online/',
   },
   {
+  id: 'whatsapp-chatbot-gateway',
+  name: 'WhatsApp Auto-Response Gateway',
+  subtitle: 'Menu-Based Chatbot via Fonnte & Apps Script',
+  tags: ['AUTOMATION', 'CHATBOT', 'INTEGRATION'],
+  metric: 'Instant Auto Reply Routing',
+  description:
+    'Client-facing WhatsApp automation built by integrating the Fonnte API with Google Apps Script as the logic layer. Incoming messages are parsed and routed through a numbered menu system (e.g. reply "1" for X, "2" for Y), triggering the appropriate auto response without manual intervention reducing repetitive client inquiries into a self service flow.',
+  stack: ['Google Apps Script', 'Fonnte API', 'WhatsApp Gateway', 'Webhook Routing'],
+  size: 'lg',
+  url: 'https://www.linkedin.com/in/pratamadimaas/',
+  linkLabel: 'Connect on LinkedIn',
+},
+{
+  id: 'konfirmasi-gaji-web',
+  name: 'Payroll Web Submission Confirmation System',
+  subtitle: 'Salary Reconciliation, SKPP & Related Services KPPN Kolaka',
+  tags: ['AUTOMATION', 'TREASURY', 'INTEGRATION'],
+  metric: 'Real Time WhatsApp Auto Notification',
+  description:
+    'Submission web app for spending units under KPPN Kolaka, covering Salary Reconciliation, SKPP, Payroll ADK Deletion, SK Completeness, New Employee Data, and Data Matching requests. Form entries are saved directly to a spreadsheet acting as the database and automatically trigger a real-time WhatsApp notification to KPPN staff via Fonnte, cutting down manual follow up time between spending units.',
+  stack: ['Google Apps Script', 'HTML/CSS/JS', 'Google Sheets', 'Fonnte API'],
+  size: 'md',
+  url: 'https://bit.ly/RekondanSkppKolaka',
+},
+  {
   id: 'anagram-project',
   name: 'Anagram Project',
   subtitle: 'Data, Programming & AI Learning Platform',
