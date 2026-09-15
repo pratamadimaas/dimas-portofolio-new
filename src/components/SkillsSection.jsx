@@ -1,18 +1,24 @@
 import { motion } from 'framer-motion';
-import { stackMatrix } from '../data/portfolioData';
+import { stackMatrix, coreStack } from '../data/portfolioData';
+import LogoLoop from './LogoLoop';
+import SplitText from './SplitText';
 
 export default function SkillsSection() {
   return (
     <section id="skills" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
-      <motion.h2
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-12 max-w-2xl">
+        <SplitText text="Capability & stack matrix" />
+      </h2>
+
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="text-3xl md:text-4xl font-semibold tracking-tight mb-12 max-w-2xl"
+        className="mb-12"
       >
-        Capability & stack matrix
-      </motion.h2>
+        <LogoLoop items={coreStack} speed={34} />
+      </motion.div>
 
       <div className="grid md:grid-cols-2 gap-4">
         {stackMatrix.map((group, gi) => (

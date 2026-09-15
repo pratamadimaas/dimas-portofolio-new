@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Check, Instagram } from 'lucide-react';
 import { identity } from '../data/portfolioData';
+import ClickSpark from './ClickSpark';
+import SplitText from './SplitText';
 
 function TikTokIcon(props) {
   return (
@@ -42,7 +44,7 @@ export default function ContactSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-zinc-100">
-            Secure transmission
+            <SplitText text="Secure transmission" />
           </h2>
           <p className="mt-3 text-slate-600 dark:text-zinc-400 leading-relaxed max-w-sm text-sm md:text-base">
             For enterprise projects, architecture consulting, or software engineering initiatives, send a message directly.
@@ -130,18 +132,20 @@ export default function ContactSection() {
             />
           </label>
 
-          <button
-            type="submit"
-            disabled={sent}
-            className={`inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-mono font-medium transition-all duration-200 ${
-              sent
-                ? 'bg-emerald-600 text-white cursor-default'
-                : 'bg-slate-900 hover:bg-slate-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-950 active:scale-95'
-            }`}
-          >
-            {sent ? <Check size={14} /> : <Send size={14} />}
-            {sent ? 'Payload Transmitted' : 'Send Transmission'}
-          </button>
+          <ClickSpark sparkColor="#22c55e" className="inline-block rounded-full">
+            <button
+              type="submit"
+              disabled={sent}
+              className={`inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-mono font-medium transition-all duration-200 ${
+                sent
+                  ? 'bg-emerald-600 text-white cursor-default'
+                  : 'bg-slate-900 hover:bg-slate-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-950 active:scale-95'
+              }`}
+            >
+              {sent ? <Check size={14} /> : <Send size={14} />}
+              {sent ? 'Payload Transmitted' : 'Send Transmission'}
+            </button>
+          </ClickSpark>
         </motion.form>
 
       </div>

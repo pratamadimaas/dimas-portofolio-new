@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { identity } from '../data/portfolioData';
+import SplitText from './SplitText';
 
 const reveal = {
   hidden: { opacity: 0, y: 20 },
@@ -9,15 +10,9 @@ const reveal = {
 export default function AboutSection() {
   return (
     <section id="about" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
-      <motion.h2
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={reveal}
-        className="text-3xl md:text-4xl font-semibold tracking-tight mb-12 max-w-2xl"
-      >
-        Where treasury operations meet software architecture
-      </motion.h2>
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-12 max-w-2xl">
+        <SplitText text="Where treasury operations meet software architecture" />
+      </h2>
 
       <div className="grid md:grid-cols-3 gap-4">
         <motion.div

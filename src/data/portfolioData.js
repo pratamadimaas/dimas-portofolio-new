@@ -38,6 +38,12 @@ export const stackMatrix = [
   },
 ];
 
+export const coreStack = [
+  'React', 'Next.js', 'Laravel', 'Python', 'Flask', 'Spring Boot',
+  'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
+  'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
+];
+
 export const projects = [
   {
     id: 'deviasiguard',

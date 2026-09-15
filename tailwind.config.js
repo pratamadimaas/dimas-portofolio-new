@@ -51,10 +51,15 @@ export default {
           '0%, 49%': { opacity: '1' },
           '50%, 100%': { opacity: '0' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'ping-soft': 'ping-soft 2.2s cubic-bezier(0,0,0.2,1) infinite',
         blink: 'blink 1s step-end infinite',
+        marquee: 'marquee linear infinite',
       },
     },
   },

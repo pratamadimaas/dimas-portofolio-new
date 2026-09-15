@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import ClickSpark from './ClickSpark';
 
 export default function MagneticButton({ children, onClick, href, className = '', primary = false }) {
   const ref = useRef(null);
@@ -29,13 +30,15 @@ export default function MagneticButton({ children, onClick, href, className = ''
       transition={{ type: 'spring', stiffness: 150, damping: 12, mass: 0.4 }}
       className="inline-block"
     >
-      <Tag
-        href={href}
-        onClick={onClick}
-        className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ease-industrial ${base} ${className}`}
-      >
-        {children}
-      </Tag>
+      <ClickSpark sparkColor={primary ? '#22c55e' : '#3b82f6'} className="inline-block rounded-full">
+        <Tag
+          href={href}
+          onClick={onClick}
+          className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ease-industrial ${base} ${className}`}
+        >
+          {children}
+        </Tag>
+      </ClickSpark>
     </motion.div>
   );
 }

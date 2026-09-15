@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
 import ProjectCard from './ProjectCard';
+import SplitText from './SplitText';
 
 export default function ProjectsSection() {
   return (
@@ -16,7 +17,7 @@ export default function ProjectsSection() {
           Selected Work
         </span>
         <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
-          Production systems, not prototypes
+          <SplitText text="Production systems, not prototypes" />
         </h2>
         <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
           Nine systems built across public treasury operations, automation, and full-stack

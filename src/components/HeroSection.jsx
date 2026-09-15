@@ -5,6 +5,8 @@ import { identity } from '../data/portfolioData';
 import ThreeCanvas from './ThreeCanvas';
 import TerminalHUD from './TerminalHUD';
 import MagneticButton from './MagneticButton';
+import DecryptedText from './DecryptedText';
+import CountUp from './CountUp';
 
 const container = {
   hidden: {},
@@ -26,7 +28,7 @@ export default function HeroSection({ isDark }) {
       await navigator.clipboard.writeText(identity.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
-    } catch (e) {
+    } catch {
       /* clipboard unavailable — no-op */
     }
   };
@@ -43,7 +45,7 @@ export default function HeroSection({ isDark }) {
             variants={item}
             className="mt-6 text-[2.6rem] leading-[1.05] sm:text-5xl md:text-6xl font-semibold tracking-tight text-balance"
           >
-            {identity.name}
+            <DecryptedText text={identity.name} startDelay={300} speed={28} revealDelay={38} />
           </motion.h1>
 
           <motion.p
@@ -65,10 +67,12 @@ export default function HeroSection({ isDark }) {
               {copied ? <Check size={15} /> : <Copy size={15} />}
               {copied ? 'Email Copied' : 'Initialize Communication'}
             </MagneticButton>
+
             <MagneticButton href="#projects">
               Explore Systems
               <ArrowDownRight size={15} />
             </MagneticButton>
+
             <a
               href="https://linkedin.com/in/pratamadimaas"
               target="_blank"
@@ -86,7 +90,9 @@ export default function HeroSection({ isDark }) {
           >
             {identity.telemetry.map((t) => (
               <div key={t.label}>
-                <div className="font-display text-xl md:text-2xl font-semibold">{t.value}</div>
+                <div className="font-display text-xl md:text-2xl font-semibold">
+                  <CountUp value={t.value} duration={1400} startDelay={600} />
+                </div>
                 <div className="label-mono mt-1">{t.label}</div>
               </div>
             ))}
