@@ -7,11 +7,11 @@ export const identity = {
   summary:
     'Software Engineer and public treasury practitioner at the Directorate General of Treasury (Ministry of Finance of Indonesia). Fusing public sector accounting principles, statutory budget execution frameworks, and modern software engineering architectures to transform complex manual workflows into high-throughput automated systems.',
   credential:
-  'PKN STAN alumnus (Asset Management & Treasury) and Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
+  'PKN STAN alumnus (Asset Management & Treasury) and self-funded Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
-    { label: 'Treasury Audit Turnaround ', value: 'Days Cut to Hours' },
+    { label: 'Treasury Audit Turnaround at KPPN Kolaka', value: 'Days Cut to Hours' },
     { label: 'Manual Workload Eliminated Across Spending Units', value: '>80% Reduction' },
-    { label: 'Internal Automation Systems Delivered', value: '6 Systems in Active Use' },
+    { label: 'Government Automation Systems Delivered', value: '6 Systems in Active Use' },
   ],
   socials: {
     instagram: 'https://www.instagram.com/pratama_dimaas/',
@@ -22,7 +22,7 @@ export const identity = {
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
   },
   {
     group: 'UI & Creative Engineering',
@@ -59,7 +59,7 @@ export const projects = [
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: 'Instant Sync & Automated Dispatch',
     description:
-      'Analytics and automation engine built to audit budget realization deviations against Section III DIPA cash withdrawal plans (PER-5/PB/2024 compliance). Ingests raw MyIntress Excel extracts with zero preprocessing, generates interactive risk matrices, computes IKPA performance scores, and drafts targeted WhatsApp action items for regional spending units.',
+      'Audits budget deviations against DIPA cash withdrawal plans under PER-5/PB/2024. Reads raw MyIntress Excel exports, scores IKPA performance, and sends WhatsApp alerts to spending units.',
     stack: ['Google Apps Script', 'Data Analytics', 'Chart.js', 'PDF/Excel Export Engine'],
     size: 'lg',
     url: 'https://s.kemenkeu.go.id/Deviasi156',
@@ -72,7 +72,7 @@ export const projects = [
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: '8 Data Quality Rules Validated',
     description:
-      'Diagnostic web assistant that ingests raw Capaian Rincian Output (RO) exports from MyIntress/SAKTI and validates them against the 8 statutory data-quality variables under Juknis 2026 (PER-5/PB/2024). Flags PCRO/RVRO/TPCRO anomalies, computes IKPA component scores per RO, and auto-drafts the SAKTI keterangan text spending units need to get KPPN approval.',
+      'Validates Capaian Rincian Output data from MyIntress/SAKTI against the 8 statutory quality rules in PER-5/PB/2024. Flags anomalies, scores IKPA per output, and drafts the SAKTI approval notes.',
     stack: ['Google Apps Script', 'SheetJS (xlsx)', 'Tailwind CSS', 'IKPA Scoring Engine'],
     size: 'md',
     url: 'https://s.kemenkeu.go.id/Caput156',
@@ -85,7 +85,7 @@ export const projects = [
     tags: ['OOP', 'PYTHON', 'FINANCIAL AUDIT'],
     metric: '151 Validation Rules Checked',
     description:
-      'Offline desktop application built on object-oriented Python architecture to audit thousands of monthly ledger transactions across accrual, cash, bank, and comparative journals. Encapsulates 151 statutory accounting rules into automated validation classes, compressing audit turnaround time from days to hours.',
+      'Audits government ledger transactions against 151 statutory accounting rules using an object-oriented Python architecture, cutting review time from days to hours.',
     stack: ['Python', 'Pandas', 'Regex Pattern Engine', 'Tkinter GUI'],
     size: 'lg',
     url: 'https://www.linkedin.com/in/pratamadimaas/',
@@ -99,7 +99,7 @@ export const projects = [
     tags: ['FULL-STACK', 'ENTERPRISE'],
     metric: 'Leave & Guest System',
     description:
-      'Internal enterprise portal engineered to govern stakeholder consultations, visitor reception registries, and employee leave requests. Eliminates manual paperwork, mitigates data entry errors, and establishes transparent audit trails across KPPN Kolaka.',
+      'Manages visitor registration and employee leave requests for KPPN Kolaka, replacing manual paperwork with a tracked digital workflow.',
     stack: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
     size: 'md',
     url: 'https://smart-kppnkolaka.my.id/',
@@ -112,7 +112,7 @@ export const projects = [
     tags: ['AUTOMATION', 'DESKTOP'],
     metric: '>80% Cycle Time Cut',
     description:
-      'Desktop automation utility designed to streamline the compilation of treasury disbursement dossiers (UP PNBP, UP KKP, and TUP). Features instantaneous numeric-to-words currency conversion (Indonesian terbilang), automated image/stamp binding, strict form input sanitization, and programmatic Word document rendering.',
+      'Generates treasury disbursement documents (UP PNBP, UP KKP, TUP) with automatic terbilang conversion, stamp binding, and Word rendering.',
     stack: ['Python', 'Tkinter', 'python-docx', 'Automation Logic'],
     size: 'lg',
     url: 'https://www.linkedin.com/in/pratamadimaas/',
@@ -126,7 +126,7 @@ export const projects = [
     tags: ['SAAS', 'FULL-STACK', 'AUTOMATION'],
     metric: '500+ Docs Generated',
     description:
-      'Self-serve SaaS platform that turns any uploaded Word template into a reusable document generator. Parses DOCX placeholders (e.g. ${nama}, ${tanggal}, ${jabatan}) to auto build a data entry form, then renders a fully formatted output document in under 3 seconds and used by schools, HR departments, village offices, notaries, and clinics to replace repetitive manual typing.',
+      'Turns uploaded Word templates into a self-serve document generator. Parses placeholders into a form, then renders finished documents in under 3 seconds. Used by schools, HR teams, and notaries.',
     stack: ['React.js', 'Laravel', 'MySQL', 'Ubuntu VPS'],
     size: 'md',
     url: 'https://cleardraft.online/',
@@ -139,7 +139,7 @@ export const projects = [
   tags: ['AUTOMATION', 'CHATBOT', 'INTEGRATION'],
   metric: 'Instant Auto Reply Routing',
   description:
-    'Client-facing WhatsApp automation built by integrating the Fonnte API with Google Apps Script as the logic layer. Incoming messages are parsed and routed through a numbered menu system (e.g. reply "1" for X, "2" for Y), triggering the appropriate auto response without manual intervention reducing repetitive client inquiries into a self service flow.',
+    'Routes incoming WhatsApp messages through a numbered menu using the Fonnte API and Google Apps Script, automating replies to common client questions.',
   stack: ['Google Apps Script', 'Fonnte API', 'WhatsApp Gateway', 'Webhook Routing'],
   size: 'lg',
   url: 'https://www.linkedin.com/in/pratamadimaas/',
@@ -153,7 +153,7 @@ export const projects = [
   tags: ['AUTOMATION', 'TREASURY', 'INTEGRATION'],
   metric: 'Real Time WhatsApp Auto Notification',
   description:
-    'Submission web app for spending units under KPPN Kolaka, covering Salary Reconciliation, SKPP, Payroll ADK Deletion, SK Completeness, New Employee Data, and Data Matching requests. Form entries are saved directly to a spreadsheet acting as the database and automatically trigger a real-time WhatsApp notification to KPPN staff via Fonnte, cutting down manual follow up time between spending units.',
+    'Handles salary reconciliation and SKPP submissions for spending units under KPPN Kolaka, with real-time WhatsApp notifications on each update.',
   stack: ['Google Apps Script', 'HTML/CSS/JS', 'Google Sheets', 'Fonnte API'],
   size: 'md',
   url: 'https://bit.ly/RekondanSkppKolaka',
@@ -166,8 +166,8 @@ export const projects = [
   tags: ['EDTECH', 'CO-FOUNDED', 'ASSESSMENT ENGINE'],
   metric: 'Co-Founded & In Development',
   description:
-    'Education platform built with a business partner to make data analytics, programming, and practical AI accessible to complete beginners, no IT background required. Spans bootcamps and workshops, self paced digital products like templates and case study libraries, and by request custom development and corporate training for businesses and government offices. Includes a custom quiz and exam system built on Google Apps Script for grading and tracking learner progress.',
-  stack: ['React.js', 'Tailwind CSS', 'Google Apps Script (Quiz & Grading Engine)', 'Vercel'],
+    'Teaches data analytics, programming, and practical AI to beginners through bootcamps, self-paced materials, and corporate training. Includes a custom quiz and grading system for tracking learner progress.',
+  stack: ['React.js', 'Tailwind CSS', 'Google Apps Script (Quiz & Grading Engine)', 'Canva (Visual Design)', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
 },
