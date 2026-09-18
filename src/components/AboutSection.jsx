@@ -38,6 +38,15 @@ export default function AboutSection() {
             <p className="text-sm leading-relaxed text-titanium-muted dark:text-obsidian-muted">
               {identity.credential}
             </p>
+
+            <a
+              href={identity.socials.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-xs text-titanium-muted dark:text-obsidian-muted mt-4 pt-4 border-t border-titanium-border dark:border-obsidian-border hover:text-engine transition-colors duration-200"
+            >
+              Also shares build logs and coding tutorials on TikTok (900+ followers) as Code With Dims.
+            </a>
           </div>
         </motion.div>
 
