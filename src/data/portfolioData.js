@@ -9,9 +9,9 @@ export const identity = {
   credential:
   'PKN STAN alumnus (Asset Management & Treasury) and self-funded Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
-    { label: 'Review Latency Cut', value: 'Days to Hours' },
-    { label: 'Admin Overhead Reduced', value: '>80%' },
-    { label: 'Compliance Criteria Validated', value: '151 Rules' },
+    { label: 'Treasury Audit Turnaround ', value: 'Days Cut to Hours' },
+    { label: 'Manual Workload Eliminated Across Spending Units', value: '>80% Reduction' },
+    { label: 'Internal Automation Systems Delivered', value: '6 Systems in Active Use' },
   ],
   socials: {
     instagram: 'https://www.instagram.com/pratama_dimaas/',
@@ -22,7 +22,7 @@ export const identity = {
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Python (Flask)', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
   },
   {
     group: 'UI & Creative Engineering',
@@ -44,11 +44,18 @@ export const coreStack = [
   'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
 ];
 
+export const projectFilters = [
+  { key: 'all', label: 'All' },
+  { key: 'instansi', label: 'Internal' },
+  { key: 'freelance', label: 'Freelance' },
+];
+
 export const projects = [
   {
     id: 'deviasiguard',
     name: 'DeviasiGuard',
     subtitle: 'Budget Deviation Analytics & WhatsApp Dispatch Engine',
+    category: 'instansi',
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: 'Instant Sync & Automated Dispatch',
     description:
@@ -61,6 +68,7 @@ export const projects = [
     id: 'si-caput',
     name: 'SI-CAPUT 2026',
     subtitle: 'Asisten Diagnostik Capaian Output Satker',
+    category: 'instansi',
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: '8 Data Quality Rules Validated',
     description:
@@ -73,6 +81,7 @@ export const projects = [
     id: 'telaah-lk-desktop',
     name: 'Telaah LK Desktop Engine',
     subtitle: 'Automated Government Ledger Compliance Auditor',
+    category: 'instansi',
     tags: ['OOP', 'PYTHON', 'FINANCIAL AUDIT'],
     metric: '151 Validation Rules Checked',
     description:
@@ -86,6 +95,7 @@ export const projects = [
     id: 'smart-kppn-kolaka',
     name: 'SMART KPPN Kolaka',
     subtitle: 'Guest Administration & Employee Leave Portal',
+    category: 'instansi',
     tags: ['FULL-STACK', 'ENTERPRISE'],
     metric: 'Leave & Guest System',
     description:
@@ -98,6 +108,7 @@ export const projects = [
     id: 'up-tup-smart-generator',
     name: 'UP-TUP Smart Document Generator',
     subtitle: 'Financial Administration Document Automation',
+    category: 'instansi',
     tags: ['AUTOMATION', 'DESKTOP'],
     metric: '>80% Cycle Time Cut',
     description:
@@ -111,6 +122,7 @@ export const projects = [
     id: 'cleardraft',
     name: 'ClearDraft',
     subtitle: 'Self-Serve Document Generation SaaS',
+    category: 'freelance',
     tags: ['SAAS', 'FULL-STACK', 'AUTOMATION'],
     metric: '500+ Docs Generated',
     description:
@@ -123,6 +135,7 @@ export const projects = [
   id: 'whatsapp-chatbot-gateway',
   name: 'WhatsApp Auto-Response Gateway',
   subtitle: 'Menu-Based Chatbot via Fonnte & Apps Script',
+  category: 'freelance',
   tags: ['AUTOMATION', 'CHATBOT', 'INTEGRATION'],
   metric: 'Instant Auto Reply Routing',
   description:
@@ -136,6 +149,7 @@ export const projects = [
   id: 'konfirmasi-gaji-web',
   name: 'Payroll Web Submission Confirmation System',
   subtitle: 'Salary Reconciliation, SKPP & Related Services KPPN Kolaka',
+  category: 'instansi',
   tags: ['AUTOMATION', 'TREASURY', 'INTEGRATION'],
   metric: 'Real Time WhatsApp Auto Notification',
   description:
@@ -148,11 +162,12 @@ export const projects = [
   id: 'anagram-project',
   name: 'Anagram Project',
   subtitle: 'Data, Programming & AI Learning Platform',
-  tags: ['EDTECH', 'CO-FOUNDED'],
+  category: 'freelance',
+  tags: ['EDTECH', 'CO-FOUNDED', 'ASSESSMENT ENGINE'],
   metric: 'Co-Founded & In Development',
   description:
-    'Education platform built with a business partner to make data analytics, programming, and practical AI accessible to complete beginners, no IT background required. Spans bootcamps and workshops, self paced digital products like templates and case study libraries, and by request custom development and corporate training for businesses and government offices.',
-  stack: ['React.js', 'Tailwind CSS','Google Apps Script','Vercel'],
+    'Education platform built with a business partner to make data analytics, programming, and practical AI accessible to complete beginners, no IT background required. Spans bootcamps and workshops, self paced digital products like templates and case study libraries, and by request custom development and corporate training for businesses and government offices. Includes a custom quiz and exam system built on Google Apps Script for grading and tracking learner progress.',
+  stack: ['React.js', 'Tailwind CSS', 'Google Apps Script (Quiz & Grading Engine)', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
 },
