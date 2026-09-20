@@ -90,7 +90,7 @@ export const projects = [
     stack: ['Python', 'Pandas', 'Regex Pattern Engine', 'Tkinter GUI'],
     size: 'lg',
     url: 'https://www.linkedin.com/in/pratamadimaas/',
-    linkLabel: 'Connect on LinkedIn',
+    linkLabel: 'Available on Request',
   },
   {
     id: 'smart-kppn-kolaka',
@@ -117,7 +117,7 @@ export const projects = [
     stack: ['Python', 'Tkinter', 'python-docx', 'Automation Logic'],
     size: 'lg',
     url: 'https://www.linkedin.com/in/pratamadimaas/',
-    linkLabel: 'Connect on LinkedIn',
+    linkLabel: 'Available on Request',
   },
   {
     id: 'cleardraft',
@@ -144,7 +144,7 @@ export const projects = [
   stack: ['Google Apps Script', 'Fonnte API', 'WhatsApp Gateway', 'Webhook Routing'],
   size: 'lg',
   url: 'https://www.linkedin.com/in/pratamadimaas/',
-  linkLabel: 'Connect on LinkedIn',
+  linkLabel: 'Available on Request',
 },
 {
   id: 'konfirmasi-gaji-web',
@@ -198,7 +198,7 @@ export const projects = [
   stack: ['Python', 'scikit-learn', 'Pandas', 'Random Forest', 'Google Colab'],
   size: 'lg',
   url: 'https://www.linkedin.com/in/pratamadimaas/',
-  linkLabel: 'Connect on LinkedIn',
+  linkLabel: 'Discuss via LinkedIn (Data Confidential)',
 },
 ];
 
