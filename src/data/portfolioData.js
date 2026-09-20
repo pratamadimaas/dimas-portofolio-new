@@ -5,9 +5,9 @@ export const identity = {
   status: 'Open to Collaborative Tech Initiatives',
   email: 'dimasmg2017@gmail.com',
   summary:
-    'Software Engineer and public treasury practitioner at the Directorate General of Treasury (Ministry of Finance of Indonesia). Fusing public sector accounting principles, statutory budget execution frameworks, and modern software engineering architectures to transform complex manual workflows into high-throughput automated systems.',
+    'Software Engineer and public treasury practitioner at the Directorate General of Treasury (Ministry of Finance of Indonesia). Fusing public sector accounting principles, statutory budget execution frameworks, and modern software engineering architectures to transform complex manual workflows into high throughput automated systems.',
   credential:
-  'PKN STAN alumnus (Asset Management & Treasury) and Information Systems student at UNSIA, backed by foundational Informatics training at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
+  'PKN STAN alumnus (Asset Management & Treasury) and Information Systems student at UNSIA, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
     { label: 'Treasury Audit Turnaround at KPPN Kolaka', value: 'Days Cut to Hours' },
     { label: 'Manual Workload Eliminated Across Spending Units', value: '>80% Reduction' },
@@ -167,8 +167,8 @@ export const projects = [
   tags: ['EDTECH', 'CO-FOUNDED', 'ASSESSMENT ENGINE'],
   metric: 'Co-Founded & In Development',
   description:
-    'Teaches data analytics, programming, and practical AI to beginners through bootcamps, self-paced materials, and corporate training. Includes a custom quiz and grading system for tracking learner progress.',
-  stack: ['React.js', 'Tailwind CSS', 'Google Apps Script (Quiz & Grading Engine)', 'Canva (Visual Design)', 'Vercel'],
+    'Teaches data analytics, programming, and practical AI to beginners through bootcamps, self-paced materials, and corporate training. Includes a custom quiz and grading system for tracking learner progress. Also offers custom application development services for businesses on request.',
+  stack: ['React.js', 'Tailwind CSS', 'Google Apps Script', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
 },
@@ -186,6 +186,20 @@ export const projects = [
   url: 'https://colab.research.google.com/drive/1fUAhrkbYdG5pUZ3f2TVSNzJDUtXbyLd4?usp=sharing',
   linkLabel: 'View on Google Colab',
 },
+  {
+  id: 'budget-deviation-risk-model',
+  name: 'Budget Deviation Early Warning Model',
+  subtitle: 'Binary Classification for Spending Unit Compliance Risk',
+  category: 'personal',
+  tags: ['MACHINE LEARNING', 'CLASSIFICATION', 'TREASURY'],
+  metric: '55 Spending Units Scored for Year End Risk',
+  description:
+    'Random Forest classifier trained on 2024-2025 monthly deviation patterns across 5 spending categories to predict which spending units are likely to fall below the compliance threshold by year end. Applied live to September 2026 data to flag at risk units before Q4 closes, alongside a pace tracking metric identifying which units are falling behind their own disbursement plan.',
+  stack: ['Python', 'scikit-learn', 'Pandas', 'Random Forest', 'Google Colab'],
+  size: 'lg',
+  url: 'https://colab.research.google.com/drive/1wS92qkYcj2gby-9LHVOzSFsnZEV0GmZb?usp=sharing',
+  linkLabel: 'View on Google Colab',
+},
 ];
 
 export const experience = [
@@ -193,7 +207,7 @@ export const experience = [
     period: 'Nov 2024 — Present',
     title: 'KPPN Kolaka',
     role: 'Customer Service Officer',
-    detail: 'Managing spending unit consultations, resolving core system operations (SAKTI/MyIntress), and engineering automation tools like DeviasiGuard and SMART to safeguard budget compliance.',
+    detail: 'Managing spending unit consultations, resolving core system operations (SAKTI/MyIntress), and engineering automation tools like DeviasiGuard and SI-CAPUT to safeguard budget compliance.',
     badge: 'Current Assignment',
   },
   {
@@ -231,7 +245,7 @@ export const experience = [
 export const education = [
   {
     period: '2026 — 2028',
-    title: 'Universitas Siber Asia (UNSIA)',
+    title: 'Universitas Siber Asia',
     role: 'B.S. in Information Systems (Currently Enrolled)',
     detail: 'Currently pursuing a bachelor\'s degree in Information Systems part-time alongside full-time work, deepening formal grounding in enterprise systems architecture, distributed database paradigms, and large-scale software engineering.',
     badge: 'Higher Education',
@@ -252,16 +266,16 @@ export const education = [
   },
   {
     period: '2017 — 2018',
-    title: 'Universitas Sebelas Maret (UNS)',
+    title: 'Universitas Sebelas Maret',
     role: 'Informatics',
-    detail: 'Completed coursework with a 3.56 GPA. Established rigorous foundations in algorithms, data structures, C, and Python.',
+    detail: 'Admitted through SBMPTN. Spent one deeply engaged year here building a foundation in algorithms, data structures, C, and Python (3.56 GPA) before leaving to pursue an opportunity at PKN STAN.',
     badge: 'Foundational CS',
   },
   {
     period: '2014 — 2017',
     title: 'SMA Negeri 1 Purworejo',
     role: 'Natural Sciences & Mathematics (MIPA)',
-    detail: 'Developed a strong personal draw toward mathematics and logic — the analytical instinct that would later carry directly into algorithmic thinking and systems design.',
+    detail: 'Developed a strong personal draw toward mathematics and logic, the analytical instinct that would later carry directly into algorithmic thinking and systems design.',
     badge: 'Secondary Education',
   },
 ];

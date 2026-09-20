@@ -106,9 +106,7 @@ export default function ProjectsSection() {
               <Lock size={15} className="shrink-0 mt-0.5" />
               <p>
                 Several freelance projects including custom web applications, landing pages,
-                company profile and education websites, internal management systems, ticketing
-                platforms, inventory and warehouse solutions, e-commerce storefronts, POS
-                systems, and document-generation tools were developed for clients and remain
+                company profile and education websites were developed for clients and remain
                 private. For confidentiality reasons, they aren't shown here, but I'm happy to
                 discuss the relevant technical experience directly.
               </p>
