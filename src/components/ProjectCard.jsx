@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Mail, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Mail, Linkedin, FlaskConical } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 
 const sizeClasses = {
@@ -24,6 +24,7 @@ export default function ProjectCard({ project }) {
 
   const isHosted = Boolean(project.url);
   const isLinkedIn = isHosted && project.url.includes('linkedin.com');
+  const isColab = isHosted && project.url.includes('colab.research.google.com');
 
   const mailtoHref = `mailto:${identity.email}?subject=${encodeURIComponent(
     `File Request: ${project.name}`
@@ -36,7 +37,13 @@ export default function ProjectCard({ project }) {
   const linkLabel =
     project.linkLabel || (isHosted ? 'Visit System' : 'Request via Email');
 
-  const LinkIcon = isLinkedIn ? Linkedin : isHosted ? ArrowUpRight : Mail;
+  const LinkIcon = isLinkedIn
+    ? Linkedin
+    : isColab
+    ? FlaskConical
+    : isHosted
+    ? ArrowUpRight
+    : Mail;
 
   return (
     <motion.a

@@ -22,7 +22,7 @@ export const identity = {
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Python (Flask)', 'Java (Spring Boot)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
   },
   {
     group: 'UI & Creative Engineering',
@@ -39,7 +39,7 @@ export const stackMatrix = [
 ];
 
 export const coreStack = [
-  'React', 'Next.js', 'Laravel', 'Python', 'Flask', 'Spring Boot',
+  'React', 'Next.js', 'Laravel', 'Python', 'Flask',
   'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
   'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
 ];
@@ -48,6 +48,7 @@ export const projectFilters = [
   { key: 'all', label: 'All' },
   { key: 'instansi', label: 'Internal' },
   { key: 'freelance', label: 'Freelance' },
+  { key: 'personal', label: 'Data Science' },
 ];
 
 export const projects = [
@@ -72,7 +73,7 @@ export const projects = [
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: '8 Data Quality Rules Validated',
     description:
-      'Validates Capaian Rincian Output data from MyIntress/SAKTI against the 8 statutory quality rules in PER-5/PB/2024. Flags anomalies, scores IKPA per output, and drafts the SAKTI approval notes.',
+      'Validates Capaian Rincian Output data from MyIntress/SAKTI against the 8 statutory data-quality variables in PER-5/PB/2024. Flags anomalies, scores IKPA per output, and drafts the SAKTI approval notes.',
     stack: ['Google Apps Script', 'SheetJS (xlsx)', 'Tailwind CSS', 'IKPA Scoring Engine'],
     size: 'md',
     url: 'https://s.kemenkeu.go.id/Caput156',
@@ -170,6 +171,20 @@ export const projects = [
   stack: ['React.js', 'Tailwind CSS', 'Google Apps Script (Quiz & Grading Engine)', 'Canva (Visual Design)', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
+},
+  {
+  id: 'football-player-clustering',
+  name: 'Football Player Archetype Clustering',
+  subtitle: 'Unsupervised Tactical Style Classification, Europe Top 5 Leagues',
+  category: 'personal',
+  tags: ['MACHINE LEARNING', 'CLUSTERING', 'DATA SCIENCE'],
+  metric: '1,330 Players Sorted into 6 Tactical Archetypes',
+  description:
+    'Applies K-Means clustering on per-90-minute performance metrics (goals, assists, shots, tackles, interceptions) from the 2026-2027 season across the Premier League, La Liga, Serie A, Bundesliga, and Ligue 1. Groups outfield players into 6 tactical archetypes, from Elite Finisher to Playmaker Kreatif, validated with PCA visualization and silhouette scoring.',
+  stack: ['Python', 'scikit-learn', 'Pandas', 'Matplotlib', 'Google Colab'],
+  size: 'md',
+  url: 'https://colab.research.google.com/drive/1fUAhrkbYdG5pUZ3f2TVSNzJDUtXbyLd4?usp=sharing',
+  linkLabel: 'View on Google Colab',
 },
 ];
 
