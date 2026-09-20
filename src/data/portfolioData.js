@@ -187,6 +187,20 @@ export const projects = [
   linkLabel: 'View on Google Colab',
 },
   {
+  id: 'gold-price-forecasting',
+  name: 'Gold Price Forecasting & Risk Analysis',
+  subtitle: 'Time Series Analysis of 16 Years of Indonesian Gold Prices',
+  category: 'personal',
+  tags: ['MACHINE LEARNING', 'TIME SERIES', 'FORECASTING'],
+  metric: '5,187 Daily Observations, 2010 to 2026',
+  description:
+    'Forecasts Antam gold prices using Prophet, decomposed against trend and seasonality across 16 years of daily data. Detects bull and bear regimes through moving average crossovers, quantifies risk through rolling volatility and maximum drawdown, and overlays major macroeconomic events including the 2011 European debt crisis, the 2020 COVID crash, and the 2025 to 2026 rally.',
+  stack: ['Python', 'Prophet', 'Pandas', 'NumPy', 'Matplotlib', 'Google Colab'],
+  size: 'lg',
+  url: 'https://colab.research.google.com/drive/1F4bZXQ_6YMfbfyxM0s5WXHWJbiHtuyrx?usp=sharing',
+  linkLabel: 'View on Google Colab',
+},
+  {
   id: 'budget-deviation-risk-model',
   name: 'Budget Deviation Early Warning Model',
   subtitle: 'Binary Classification for Spending Unit Compliance Risk',
