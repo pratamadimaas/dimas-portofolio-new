@@ -197,8 +197,8 @@ export const projects = [
     'Random Forest classifier trained on 2024-2025 monthly deviation patterns across 5 spending categories to predict which spending units are likely to fall below the compliance threshold by year end. Applied live to September 2026 data to flag at risk units before Q4 closes, alongside a pace tracking metric identifying which units are falling behind their own disbursement plan.',
   stack: ['Python', 'scikit-learn', 'Pandas', 'Random Forest', 'Google Colab'],
   size: 'lg',
-  url: 'https://colab.research.google.com/drive/1wS92qkYcj2gby-9LHVOzSFsnZEV0GmZb?usp=sharing',
-  linkLabel: 'View on Google Colab',
+  url: 'https://www.linkedin.com/in/pratamadimaas/',
+  linkLabel: 'Connect on LinkedIn',
 },
 ];
 
