@@ -3,12 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail, Linkedin, FlaskConical } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 
-const sizeClasses = {
-  lg: 'md:col-span-2 md:row-span-2',
-  md: 'md:col-span-1 md:row-span-2',
-  sm: 'md:col-span-1 md:row-span-1',
-};
-
 export default function ProjectCard({ project }) {
   if (!project) return null;
 
@@ -71,9 +65,7 @@ export default function ProjectCard({ project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative cursor-pointer overflow-hidden rounded-2xl p-[1px] ${
-        sizeClasses[project.size] || 'md:col-span-1 md:row-span-1'
-      }`}
+      className="group relative h-full w-full cursor-pointer overflow-hidden rounded-2xl p-[1px]"
       style={{
         background: spot.active
           ? `radial-gradient(220px circle at ${spot.x}% ${spot.y}%, rgba(59,130,246,0.55), rgba(255,255,255,0.06) 60%, transparent 80%)`
@@ -123,7 +115,7 @@ export default function ProjectCard({ project }) {
             </span>
           </div>
 
-          {/* Secondary Link (Misal untuk Google Colab Notebook) */}
+          {/* Secondary Link */}
           {project.secondaryUrl && (
             <a
               href={project.secondaryUrl}
