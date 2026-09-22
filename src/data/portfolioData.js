@@ -44,6 +44,39 @@ export const coreStack = [
   'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
 ];
 
+export const certificates = [
+    {
+    id: 'python-for-data-science',
+    title: 'Python for Data Science and Machine Learning Bootcamp',
+    issuer: 'Udemy',
+    imageUrl: '/udemy1.jpg',
+  },
+      {
+    id: 'mastering-angular',
+    title: 'Mastering Angular',
+    issuer: 'Udemy',
+    imageUrl: '/udemy2.jpg',
+  },
+  {
+    id: 'dicoding-ai-basics',
+    title: 'Belajar Dasar AI',
+    issuer: 'Dicoding',
+    imageUrl: '/Dasar%20AI.png',
+  },
+  {
+    id: 'dicoding-sql-basics',
+    title: 'Belajar Dasar Structured Query Language (SQL)',
+    issuer: 'Dicoding',
+    imageUrl: '/SQL.png',
+  },
+  {
+    id: 'dicoding-data-science-basics',
+    title: 'Belajar Dasar Data Science',
+    issuer: 'Dicoding',
+    imageUrl: '/Data%20Science.png',
+  },
+];
+
 export const projectFilters = [
   { key: 'all', label: 'All' },
   { key: 'instansi', label: 'Internal' },

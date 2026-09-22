@@ -4,9 +4,10 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 
 const links = [
-  { label: 'Systems', href: '#projects' },
-  { label: 'Capabilities', href: '#skills' },
   { label: 'Trajectory', href: '#timeline' },
+  { label: 'Capabilities', href: '#skills' },
+  { label: 'Credentials', href: '#certificates' },
+  { label: 'Systems', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -21,9 +22,9 @@ export default function Navbar({ isDark, toggleTheme }) {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-3xl pointer-events-auto"
+        className="w-full max-w-4xl pointer-events-auto"
       >
-        <div className="rounded-full px-4 py-2.5 flex items-center gap-3 backdrop-blur-md bg-white/70 dark:bg-zinc-950/75 border border-slate-200/80 dark:border-zinc-800/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-colors duration-300">
+        <div className="rounded-full px-5 py-2.5 flex items-center gap-4 backdrop-blur-md bg-white/70 dark:bg-zinc-950/75 border border-slate-200/80 dark:border-zinc-800/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-colors duration-300">
           {/* Status Ping Node */}
           <a href="#top" className="flex items-center shrink-0" aria-label="Back to top">
             <span className="relative flex h-2 w-2">
@@ -42,7 +43,7 @@ export default function Navbar({ isDark, toggleTheme }) {
 
           {/* Navigation Items & Action */}
           <div className="flex items-center gap-5 shrink-0 ml-auto sm:ml-0">
-            <nav className="hidden md:flex items-center gap-5">
+            <nav className="hidden lg:flex items-center gap-6">
               {links.map((l) => (
                 <a
                   key={l.href}
@@ -81,7 +82,7 @@ export default function Navbar({ isDark, toggleTheme }) {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle navigation menu"
               aria-expanded={menuOpen}
-              className="md:hidden relative w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center shrink-0 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 transition-colors duration-200 text-slate-700 dark:text-zinc-300"
+              className="lg:hidden relative w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center shrink-0 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 transition-colors duration-200 text-slate-700 dark:text-zinc-300"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -107,7 +108,7 @@ export default function Navbar({ isDark, toggleTheme }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden mt-2 rounded-2xl overflow-hidden backdrop-blur-md bg-white/90 dark:bg-zinc-950/90 border border-slate-200/80 dark:border-zinc-800/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+              className="lg:hidden mt-2 rounded-2xl overflow-hidden backdrop-blur-md bg-white/90 dark:bg-zinc-950/90 border border-slate-200/80 dark:border-zinc-800/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
             >
               <div className="flex flex-col py-2">
                 {links.map((l) => (
