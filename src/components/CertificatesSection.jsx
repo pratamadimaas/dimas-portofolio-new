@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Eye } from 'lucide-react';
 import { certificates } from '../data/portfolioData';
 import SplitText from './SplitText';
 
@@ -22,29 +23,48 @@ export default function CertificatesSection() {
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {certificates.map((cert, i) => (
-          <motion.div
-            key={cert.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="group surface rounded-2xl overflow-hidden flex flex-col"
-          >
-            <div className="aspect-[4/3] overflow-hidden border-b border-titanium-border dark:border-obsidian-border bg-titanium-bg2 dark:bg-black/20">
-              <img
-                src={cert.imageUrl}
-                alt={cert.title}
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-industrial"
-              />
-            </div>
+        {certificates.map((cert, i) => {
+          const viewHref = cert.pdfUrl || cert.imageUrl;
+          const viewLabel = cert.pdfUrl ? 'View PDF' : 'View Image';
 
-            <div className="p-6">
-              <p className="label-mono">{cert.issuer}</p>
-              <h3 className="mt-1.5 text-base font-semibold leading-snug">{cert.title}</h3>
-            </div>
-          </motion.div>
-        ))}
+          return (
+            <motion.div
+              key={cert.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="group surface rounded-2xl overflow-hidden flex flex-col"
+            >
+              <div className="aspect-[4/3] overflow-hidden border-b border-titanium-border dark:border-obsidian-border bg-titanium-bg2 dark:bg-black/20">
+                <img
+                  src={cert.imageUrl}
+                  alt={cert.title}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-industrial"
+                />
+              </div>
+
+              <div className="p-6 flex flex-col flex-1 bg-transparent">
+                <p className="label-mono">{cert.issuer}</p>
+                <h3 className="mt-1.5 text-base font-semibold leading-snug">{cert.title}</h3>
+
+                {viewHref && (
+                  <a
+                    href={viewHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto pt-4 flex items-center gap-1.5 text-xs text-titanium-muted dark:text-obsidian-muted hover:text-engine transition-colors duration-200 w-fit"
+                  >
+                    <Eye size={13} />
+                    <span className="label-mono normal-case underline underline-offset-2 decoration-dotted">
+                      {viewLabel}
+                    </span>
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

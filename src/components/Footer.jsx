@@ -62,7 +62,7 @@ export default function Footer() {
           <span className="hidden md:inline-block w-1 h-1 rounded-full bg-slate-300 dark:bg-zinc-700" />
 
           <p className="font-mono text-xs text-slate-400 dark:text-zinc-500">
-            Architected, coded, and deployed independently.
+            Architected, coded, and deployed by dims.
           </p>
         </div>
 

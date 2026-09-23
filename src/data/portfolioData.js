@@ -19,6 +19,11 @@ export const identity = {
   },
 };
 
+export const coreStack = [
+  'React', 'Next.js', 'Angular', 'Laravel', 'Python', 'Flask',
+  'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
+  'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
+];
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
@@ -26,7 +31,7 @@ export const stackMatrix = [
   },
   {
     group: 'UI & Creative Engineering',
-    items: ['React.js', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
+    items: ['React.js', 'Next.js', 'Angular', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
   },
  {
   group: 'Data Intelligence & Desktop OOP',
@@ -38,20 +43,14 @@ export const stackMatrix = [
   },
 ];
 
-export const coreStack = [
-  'React', 'Next.js', 'Laravel', 'Python', 'Flask',
-  'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
-  'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
-];
-
 export const certificates = [
-    {
+  {
     id: 'python-for-data-science',
     title: 'Python for Data Science and Machine Learning Bootcamp',
     issuer: 'Udemy',
     imageUrl: '/udemy1.jpg',
   },
-      {
+  {
     id: 'mastering-angular',
     title: 'Mastering Angular',
     issuer: 'Udemy',
@@ -62,26 +61,43 @@ export const certificates = [
     title: 'Belajar Dasar AI',
     issuer: 'Dicoding',
     imageUrl: '/Dasar%20AI.png',
+    pdfUrl: '/sertifikat_course_653_Belajar_Dasar_AI.pdf',
   },
   {
     id: 'dicoding-sql-basics',
     title: 'Belajar Dasar Structured Query Language (SQL)',
     issuer: 'Dicoding',
     imageUrl: '/SQL.png',
+    pdfUrl: '/sertifikat_course_600_Belajar_SQL.pdf',
   },
   {
     id: 'dicoding-data-science-basics',
     title: 'Belajar Dasar Data Science',
     issuer: 'Dicoding',
     imageUrl: '/Data%20Science.png',
+    pdfUrl: '/sertifikat_course_615_Data_Science.pdf',
+  },
+  {
+    id: 'dicoding-data-visual',
+    title: 'Belajar Dasar Visualisasi Data',
+    issuer: 'Dicoding',
+    imageUrl: '/data_visual.png',
+    pdfUrl: '/sertifikat_course_177_Visualisasi_Data.pdf',
+  },
+  {
+    id: 'dicoding-python',
+    title: 'Memulai Pemrograman dengan Python',
+    issuer: 'Dicoding',
+    imageUrl: '/python.png',
+    pdfUrl: '/sertifikat_course_86_Python.pdf',
   },
 ];
 
 export const projectFilters = [
-  { key: 'all', label: 'All' },
-  { key: 'instansi', label: 'Internal' },
   { key: 'freelance', label: 'Freelance' },
   { key: 'personal', label: 'Data Science' },
+  { key: 'instansi', label: 'Internal' },
+  { key: 'all', label: 'All' },
 ];
 
 export const projects = [
@@ -192,7 +208,7 @@ export const projects = [
   size: 'md',
   url: 'https://bit.ly/RekondanSkppKolaka',
 },
-  {
+{
   id: 'anagram-project',
   name: 'Anagram Project',
   subtitle: 'Data, Programming & AI Learning Platform',
@@ -200,7 +216,7 @@ export const projects = [
   tags: ['EDTECH', 'CO-FOUNDED', 'ASSESSMENT ENGINE'],
   metric: 'Co-Founded & In Development',
   description:
-    'Teaches data analytics, programming, and practical AI to beginners through bootcamps, self-paced materials, and corporate training. Includes a custom quiz and grading system for tracking learner progress. Also offers custom application development services for businesses on request.',
+    'Co-founded with a business partner to teach data analytics, programming, and practical AI to beginners through bootcamps, self-paced materials, and corporate training. Includes a custom quiz and grading system for tracking learner progress. Also offers custom application development services for businesses on request.',
   stack: ['React.js', 'Tailwind CSS', 'Google Apps Script', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
