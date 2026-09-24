@@ -98,6 +98,13 @@ export const certificates = [
     imageUrl: '/python.png',
     pdfUrl: '/sertifikat_course_86_Python.pdf',
   },
+    {
+    id: 'dicoding-dasar-react',
+    title: 'Belajar Membuat Aplikasi Web dengan React',
+    issuer: 'Dicoding',
+    imageUrl: '/dasar_react.png',
+    pdfUrl: '/sertifikat_course_403_Membuat_Aplikasi_React.pdf',
+  },
 ];
 
 export const projectFilters = [
