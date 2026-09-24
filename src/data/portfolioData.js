@@ -70,12 +70,19 @@ export const certificates = [
     imageUrl: '/SQL.png',
     pdfUrl: '/sertifikat_course_600_Belajar_SQL.pdf',
   },
-  {
+   {
     id: 'dicoding-data-science-basics',
     title: 'Belajar Dasar Data Science',
     issuer: 'Dicoding',
     imageUrl: '/Data%20Science.png',
     pdfUrl: '/sertifikat_course_615_Data_Science.pdf',
+  },
+  {
+    id: 'dicoding-prompt-engineering',
+    title: 'Prompt Engineering untuk Software Developer',
+    issuer: 'Dicoding',
+    imageUrl: '/prompt_engineering.png',
+    pdfUrl: '/sertifikat_course_753_prompt_engineering.pdf',
   },
   {
     id: 'dicoding-data-visual',
