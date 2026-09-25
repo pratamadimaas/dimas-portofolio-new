@@ -105,6 +105,13 @@ export const certificates = [
     imageUrl: '/dasar_react.png',
     pdfUrl: '/sertifikat_course_403_Membuat_Aplikasi_React.pdf',
   },
+    {
+    id: 'dicoding-dasar-express',
+    title: 'Belajar Back-End Pemula dengan JavaScript',
+    issuer: 'Dicoding',
+    imageUrl: '/backend_javascript.png',
+    pdfUrl: '/sertifikat_course_261_Belajar Back-End_JavaScript.pdf',
+  },
 ];
 
 export const projectFilters = [
