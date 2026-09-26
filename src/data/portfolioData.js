@@ -115,8 +115,8 @@ export const certificates = [
 ];
 
 export const projectFilters = [
-  { key: 'freelance', label: 'Freelance' },
   { key: 'personal', label: 'Data Science' },
+  { key: 'freelance', label: 'Freelance' },
   { key: 'instansi', label: 'Internal' },
   { key: 'all', label: 'All' },
 ];
@@ -241,6 +241,22 @@ export const projects = [
   stack: ['React.js', 'Tailwind CSS', 'Google Apps Script', 'Vercel'],
   size: 'lg',
   url: 'https://anagram-project.vercel.app/',
+},
+{
+  id: 'taksir-rumah',
+  name: 'Taksir Rumah',
+  subtitle: 'House Price Prediction & Market Analytics Dashboard',
+  category: 'personal',
+  tags: ['MACHINE LEARNING', 'REGRESSION', 'DASHBOARD'],
+  metric: 'R² 0.85 on 20,000 Test Records',
+  description:
+    'Predicts house prices across 7 Indonesian cities and 38 districts, trained on 80,000 of 100,000 property records and validated on the remaining 20,000. Detects and removes a leaking target-derived feature, trains a log-price ensemble of LightGBM, CatBoost, and XGBoost tuned with Optuna, and explains predictions with SHAP. Deployed as an interactive dashboard with market filters, live price estimation, and model performance breakdowns.',
+  stack: ['Python', 'scikit-learn', 'LightGBM', 'XGBoost', 'CatBoost', 'Optuna', 'SHAP', 'Google Colab', 'React.js', 'Chart.js'],
+  size: 'md',
+  url: 'https://taksir-rumah-delta.vercel.app/',
+  linkLabel: 'Visit Live Dashboard',
+  secondaryUrl: 'https://colab.research.google.com/drive/1IMHtUjf2YkWDvVc0gAtOl-TNO4RjR7Id?usp=sharing',
+  secondaryLabel: 'View Notebook on Google Colab',
 },
   {
   id: 'football-player-clustering',

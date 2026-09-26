@@ -8,7 +8,7 @@ import SplitText from './SplitText';
 const anagram = projects.find((p) => p.id === 'anagram-project');
 
 export default function ProjectsSection() {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('personal');
 
   const filtered = useMemo(() => {
     if (activeFilter === 'all') return projects;
@@ -31,8 +31,9 @@ export default function ProjectsSection() {
           <SplitText text="Production systems, not prototypes" />
         </h2>
         <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
-          Nine systems spanning government treasury operations and freelance client work,
-          including Anagram Project, the education platform currently in active development.
+          Thirteen projects spanning machine learning, government treasury operations, and
+          freelance client work, including Anagram Project, the education platform currently
+          in active development.
         </p>
       </motion.div>
 
