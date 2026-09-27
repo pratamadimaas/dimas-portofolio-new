@@ -112,6 +112,13 @@ export const certificates = [
     imageUrl: '/backend_javascript.png',
     pdfUrl: '/sertifikat_course_261_Belajar Back-End_JavaScript.pdf',
   },
+    {
+    id: 'dicoding-fundamental-react',
+    title: 'Belajar Fundamental Aplikasi Web dengan React',
+    issuer: 'Dicoding',
+    imageUrl: '/react_fundamental.png',
+    pdfUrl: '/sertifikat_course_413_Fundamental_React.pdf',
+  },
 ];
 
 export const projectFilters = [
