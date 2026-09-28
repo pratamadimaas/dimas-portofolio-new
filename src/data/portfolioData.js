@@ -298,6 +298,20 @@ export const projects = [
     secondaryLabel: 'View Notebook on Google Colab',
   },
   {
+  id: 'fiscal-vulnerability-index',
+  name: 'Global Fiscal Vulnerability Index',
+  subtitle: 'Early Warning Dashboard for Sovereign Fiscal Risk, 196 Countries',
+  category: 'personal',
+  tags: ['MACHINE LEARNING', 'ECONOMETRICS', 'EARLY WARNING'],
+  metric: '196 Countries Scored, 2016 to 2035',
+  description:
+    'Builds a composite Fiscal Vulnerability Index from IMF World Economic Outlook data across 196 countries, combining debt to GDP, fiscal balance, current account, and inflation into a single risk-tiered score. Panel fixed-effects regression, Isolation Forest anomaly detection, K-Means clustering, and LightGBM forecasting to 2035 back an interactive React and Three.js dashboard with a 3D globe, country search, and an Indonesia peer benchmark.',
+  stack: ['Python', 'linearmodels (PanelOLS)', 'scikit-learn', 'LightGBM', 'Google Colab', 'React.js', 'Three.js / react-globe.gl'],
+  size: 'lg',
+  url: 'https://analitik-fiskal-global.vercel.app/',
+  linkLabel: 'Visit Live Dashboard',
+},
+  {
   id: 'budget-deviation-risk-model',
   name: 'Budget Deviation Early Warning Model',
   subtitle: 'Binary Classification for Spending Unit Compliance Risk',
