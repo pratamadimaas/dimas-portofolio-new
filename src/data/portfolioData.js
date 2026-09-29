@@ -273,7 +273,7 @@ export const projects = [
   tags: ['MACHINE LEARNING', 'CLUSTERING', 'DATA SCIENCE'],
   metric: '1,687 Players Sorted into 6 Tactical Archetypes',
   description:
-    'Applies K-Means clustering on per-90-minute performance metrics (goals, assists, shots, tackles, interceptions) from the 2025-206 and 2026-2027 season across the Premier League, La Liga, Serie A, Bundesliga, and Ligue 1. Groups outfield players into 6 tactical archetypes, from Elite Finisher to Playmaker Kreatif, validated with PCA visualization and silhouette scoring.',
+    'Applies K-Means clustering on per-90-minute performance metrics (goals, assists, shots, tackles, interceptions) from the 2025-2026 and 2026-2027 seasons across the Premier League, La Liga, Serie A, Bundesliga, and Ligue 1. Groups outfield players into 6 tactical archetypes, from Elite Finisher to Playmaker Kreatif, validated with PCA visualization and silhouette scoring.',
   stack: ['Python', 'scikit-learn', 'Pandas', 'Matplotlib', 'Google Colab'],
   size: 'md',
   url: 'https://taktik-data.vercel.app/',
@@ -287,7 +287,7 @@ export const projects = [
     subtitle: 'Time Series Analysis of 16 Years of Indonesian Gold Prices',
     category: 'personal',
     tags: ['MACHINE LEARNING', 'TIME SERIES', 'FORECASTING'],
-    metric: '6.104 Daily Observations, 2010 to 2026',
+    metric: '6,104 Daily Observations, 2010 to 2026',
     description:
       'Forecasts Antam gold prices using Prophet, decomposed against trend and seasonality across 16 years of daily data. Detects bull and bear regimes through moving average crossovers, quantifies risk through rolling volatility and maximum drawdown, and overlays major macroeconomic events including the 2011 European debt crisis, the 2020 COVID crash, and the 2025 to 2026 rally.',
     stack: ['Python', 'Prophet', 'Pandas', 'NumPy', 'Matplotlib', 'Google Colab', 'Next.js'],
@@ -369,10 +369,10 @@ export const experience = [
 
 export const education = [
   {
-    period: '2026 — 2028',
+    period: '2026 — 2027',
     title: 'Universitas Siber Asia',
     role: 'B.S. in Information Systems (Currently Enrolled)',
-    detail: 'Currently pursuing a bachelor\'s degree in Information Systems part-time alongside full-time work, deepening formal grounding in enterprise systems architecture, distributed database paradigms, and large-scale software engineering.',
+    detail: 'Currently pursuing a bachelor\'s degree in Information Systems part-time alongside full-time work, deepening formal grounding in business intelligence, data mining, artificial intelligence, and enterprise systems architecture.',
     badge: 'Higher Education',
   },
   {
