@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, Check, ArrowDownRight, Linkedin } from 'lucide-react';
+import { Copy, Check, ArrowDownRight, Download } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 import ThreeCanvas from './ThreeCanvas';
 import TerminalHUD from './TerminalHUD';
@@ -19,23 +19,6 @@ const item = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
-
-function TikTokIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M15.5 3.5c.6 2.2 2.1 3.6 4.3 3.9" />
-      <path d="M19.8 7.8v3.3c-1.9 0-3.6-.6-5-1.6v6.7a5.2 5.2 0 1 1-4.5-5.16" />
-    </svg>
-  );
-}
 
 export default function HeroSection({ isDark }) {
   const [copied, setCopied] = useState(false);
@@ -90,25 +73,10 @@ export default function HeroSection({ isDark }) {
               <ArrowDownRight size={15} />
             </MagneticButton>
 
-            <a
-              href="https://linkedin.com/in/pratamadimaas"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-titanium-border dark:border-obsidian-border text-titanium-muted dark:text-obsidian-muted hover:text-slate-900 dark:hover:text-zinc-100 hover:border-slate-400 dark:hover:border-zinc-500 transition-colors duration-200"
-            >
-              <Linkedin size={16} strokeWidth={1.8} />
-            </a>
-
-            <a
-              href={identity.socials.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok"
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-titanium-border dark:border-obsidian-border text-titanium-muted dark:text-obsidian-muted hover:text-slate-900 dark:hover:text-zinc-100 hover:border-slate-400 dark:hover:border-zinc-500 transition-colors duration-200"
-            >
-              <TikTokIcon width={16} height={16} />
-            </a>
+            <MagneticButton href="/Muhamad_Dimas_Pratama_CV.pdf" download>
+              My CV
+              <Download size={15} />
+            </MagneticButton>
           </motion.div>
 
           <motion.div

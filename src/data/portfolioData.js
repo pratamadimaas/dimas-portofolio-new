@@ -1,13 +1,13 @@
 export const identity = {
   name: 'Muhamad Dimas Pratama',
-  role: 'Civil Servant & Freelance Software Engineer',
+  role: 'Civil Servant at the Directorate General of Treasury (Ministry of Finance of Indonesia), Tech Enthusiast',
   location: 'Kolaka, Indonesia',
   status: 'Open to Collaborative Tech Initiatives',
   email: 'dimasmg2017@gmail.com',
   summary:
-    'Software Engineer and public treasury practitioner at the Directorate General of Treasury (Ministry of Finance of Indonesia). Fusing public sector accounting principles, statutory budget execution frameworks, and modern software engineering architectures to transform complex manual workflows into high throughput automated systems.',
+    'Civil servant at the Directorate General of Treasury, Ministry of Finance of Indonesia, with a self-taught passion for software engineering and data analysis on the side. Builds automation systems and monitoring dashboards that turn manual budget-compliance and reporting work into faster, easier processes, and continues developing Excel VBA tools in his current role at the Bank Section.',
   credential:
-  'PKN STAN alumnus (Asset Management & Treasury) and Information Systems student at UNSIA, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
+  'D3 Manajemen Aset Alih Program graduate of Politeknik Keuangan Negara STAN, now an Information Systems student at Universitas Siber Asia, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
     { label: 'Treasury Audit Turnaround at KPPN Kolaka', value: 'Days Cut to Hours' },
     { label: 'Manual Workload Eliminated Across Spending Units', value: '>80% Reduction' },
@@ -20,7 +20,7 @@ export const identity = {
 };
 
 export const coreStack = [
-  'React', 'Next.js', 'Angular', 'Laravel', 'Python', 'Flask',
+  'React', 'Next.js', 'Angular', 'TypeScript', 'Laravel', 'Python', 'Flask',
   'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
   'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
 ];
@@ -31,7 +31,7 @@ export const stackMatrix = [
   },
   {
     group: 'UI & Creative Engineering',
-    items: ['React.js', 'Next.js', 'Angular', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
+    items: ['React.js', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
   },
  {
   group: 'Data Intelligence & Desktop OOP',
@@ -137,11 +137,25 @@ export const projects = [
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: 'Instant Sync & Automated Dispatch',
     description:
-      'Audits budget deviations against DIPA cash withdrawal plans under PER-5/PB/2024. Reads raw MyIntress Excel exports, scores IKPA performance, and sends WhatsApp alerts to spending units.',
+      'Turns printed MyIntress Excel exports into a monitoring dashboard for budget deviations against DIPA cash withdrawal plans under PER-5/PB/2024, scores IKPA performance, and sends automated WhatsApp alerts to spending units.',
     stack: ['Google Apps Script', 'Data Analytics', 'Chart.js', 'PDF/Excel Export Engine'],
     size: 'lg',
     url: 'https://s.kemenkeu.go.id/Deviasi156',
   },
+    {
+  id: 'tkd-monitoring-report-automation',
+  name: 'TKD Quarterly Monitoring Report Automation',
+  subtitle: 'Excel VBA to Word Reporting Pipeline for Regional Transfer Funds',
+  category: 'instansi',
+  tags: ['AUTOMATION', 'EXCEL VBA', 'TREASURY'],
+  metric: '116 Placeholders, 20 Tables, and 9 Charts Filled Automatically',
+  description:
+    'Excel VBA workbook that turns raw regional transfer fund (TKD) data from OMSPAN TKD and SIKD into the full quarterly monitoring and evaluation report in Word, calculating every figure, table, and chart automatically and cutting a multi-day manual compilation into a single run each quarter.',
+  stack: ['Excel', 'VBA', 'Microsoft Word', 'OMSPAN TKD', 'SIKD'],
+  size: 'lg',
+  url: 'https://www.linkedin.com/in/pratamadimaas/',
+  linkLabel: 'Discuss via LinkedIn (Data Confidential)',
+},
   {
     id: 'si-caput',
     name: 'SI-CAPUT 2026',
@@ -150,7 +164,7 @@ export const projects = [
     tags: ['AUTOMATION', 'ANALYTICS', 'TREASURY'],
     metric: '8 Data Quality Rules Validated',
     description:
-      'Validates Capaian Rincian Output data from MyIntress/SAKTI against the 8 statutory data-quality variables in PER-5/PB/2024. Flags anomalies, scores IKPA per output, and drafts the SAKTI approval notes.',
+      'Turns Capaian Rincian Output data from MyIntress and SAKTI into a validation dashboard checked against the 8 statutory data-quality variables in PER-5/PB/2024, flags anomalies, scores IKPA per output, and drafts the SAKTI approval notes.',
     stack: ['Google Apps Script', 'SheetJS (xlsx)', 'Tailwind CSS', 'IKPA Scoring Engine'],
     size: 'md',
     url: 'https://s.kemenkeu.go.id/Caput156',
@@ -329,11 +343,18 @@ export const projects = [
 
 export const experience = [
   {
-    period: 'Nov 2024 — Present',
+    period: 'Sep 2026 — Present',
+    title: 'KPPN Kolaka',
+    role: 'Bank Staff',
+    detail: 'Handling Financial Advisor consultations and transfer-to-region (TKD) fund disbursement, processing SPP and SPM for transfer funds, managing treasury bank accounts, and administering third-party calculation (PFK) and UMi financing data. Continues developing Excel VBA automation for the section\'s quarterly reporting.',
+    badge: 'Current Assignment',
+  },
+  {
+    period: 'Nov 2024 — Sep 2026',
     title: 'KPPN Kolaka',
     role: 'Customer Service Officer',
-    detail: 'Managing spending unit consultations, resolving core system operations (SAKTI/MyIntress), and engineering automation tools like DeviasiGuard and SI-CAPUT to safeguard budget compliance.',
-    badge: 'Current Assignment',
+    detail: 'Managed spending unit consultations, resolved core system operations (SAKTI/MyIntress), and built DeviasiGuard and SI-CAPUT, two systems that turn printed MyIntress Excel exports into monitoring dashboards for budget deviation and output achievement.',
+    badge: 'Prior Assignment',
   },
   {
     period: 'Sep 2024 — Oct 2024',
@@ -346,7 +367,7 @@ export const experience = [
     period: 'Aug 2022 — Sep 2024',
     title: 'Sekretariat Direktorat Jenderal Perbendaharaan',
     role: 'Tugas Belajar (Ministry-Funded Scholarship)',
-    detail: 'Administratively home-based at the DG Treasury Secretariat while on a fully Ministry of Finance-funded tugas belajar, returning to PKN STAN for a second Associate Degree (D3) in Asset Management.',
+    detail: 'Administratively home-based at the DG Treasury Secretariat while on a fully Ministry of Finance-funded tugas belajar, returning to PKN STAN for the D3 Manajemen Aset Alih Program, an Associate Degree conversion track in Asset Management.',
     badge: 'HQ Assignment',
   },
   {
@@ -378,7 +399,7 @@ export const education = [
   {
     period: '2022 — 2024',
     title: 'Politeknik Keuangan Negara STAN',
-    role: 'Associate Degree (D3 Extension) — Asset Management',
+    role: 'D3 Manajemen Aset Alih Program (Associate Degree Conversion Track, Asset Management)',
     detail: 'Graduated with a 3.76 GPA specializing in business valuation, government financial accounting, and state asset optimization. It was also during this period that programming re-entered the picture, self-driven coding practice alongside formal coursework became the seed of the full-stack engineering path that followed.',
     badge: 'Study Assignment',
   },
