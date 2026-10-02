@@ -392,7 +392,7 @@ export const education = [
   {
     period: '2026 — 2027',
     title: 'Universitas Siber Asia',
-    role: 'B.S. in Information Systems (Currently Enrolled)',
+    role: 'Bachelor’s Student in Information Systems',
     detail: 'Currently pursuing a bachelor\'s degree in Information Systems part-time alongside full-time work, deepening formal grounding in business intelligence, data mining, artificial intelligence, and enterprise systems architecture.',
     badge: 'Higher Education',
   },
