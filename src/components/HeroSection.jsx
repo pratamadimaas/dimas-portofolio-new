@@ -74,7 +74,7 @@ export default function HeroSection({ isDark }) {
             </MagneticButton>
 
             <MagneticButton href="/Muhamad_Dimas_Pratama_CV.pdf" download>
-              My CV
+              Curriculum Vitae
               <Download size={15} />
             </MagneticButton>
           </motion.div>

@@ -5,7 +5,7 @@ export const identity = {
   status: 'Open to Collaborative Tech Initiatives',
   email: 'dimasmg2017@gmail.com',
   summary:
-    'Civil servant at the Directorate General of Treasury, Ministry of Finance of Indonesia, with a self-taught passion for software engineering and data analysis on the side. Builds automation systems and monitoring dashboards that turn manual budget-compliance and reporting work into faster, easier processes, and continues developing Excel VBA tools in his current role at the Bank Section.',
+    'Civil servant at the Directorate General of Treasury, Ministry of Finance of Indonesia, with a self-taught passion for software engineering and data analysis on the side. Builds automation systems and monitoring dashboards that turn manual budget-compliance and reporting work into faster and easier processes.',
   credential:
   'D3 Manajemen Aset Alih Program graduate of Politeknik Keuangan Negara STAN, now an Information Systems student at Universitas Siber Asia, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
