@@ -31,7 +31,7 @@ export default function ProjectsSection() {
           <SplitText text="Production systems, not prototypes" />
         </h2>
         <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
-        Fifteen projects spanning machine learning, government treasury operations, and freelance client work, including Anagram Project, the education platform currently in active development.
+        Sixteen projects spanning machine learning, AI assistants, government treasury operations, and freelance client work, including Anagram Project, the education platform currently in active development.
         </p>
       </motion.div>
 

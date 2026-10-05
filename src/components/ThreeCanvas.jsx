@@ -1,14 +1,7 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 
-/**
- * Interactive geometric wireframe core.
- * Rotates gently on its own axis, and tilts toward the cursor with damped
- * inertia. On touch devices it tilts toward a slow idle drift instead of
- * pointer tracking. Renders a low-poly icosahedron wireframe layered with a
- * thinner torus-knot ring for a "blueprint schematic" read rather than a
- * decorative orb.
- */
+
 function WireframeCore({ color, isTouch }) {
   const groupRef = useRef();
   const target = useRef({ x: 0, y: 0 });

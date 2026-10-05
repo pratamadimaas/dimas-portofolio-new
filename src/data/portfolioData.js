@@ -21,13 +21,13 @@ export const identity = {
 
 export const coreStack = [
   'React', 'Next.js', 'Angular', 'TypeScript', 'Laravel', 'Python', 'Flask',
-  'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL',
+  'Node.js', 'Three.js / R3F', 'Tailwind CSS', 'Docker', 'MySQL', 'PostgreSQL',
   'SQL Server', 'MongoDB', 'Nginx', 'Tableau', 'Google Apps Script',
 ];
 export const stackMatrix = [
   {
     group: 'Core Systems & Backend',
-    items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)'],
+    items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)', 'LLM API Integration'],
   },
   {
     group: 'UI & Creative Engineering',
@@ -35,11 +35,11 @@ export const stackMatrix = [
   },
  {
   group: 'Data Intelligence & Desktop OOP',
-  items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation', 'Tableau', 'Google Apps Script', 'Google Looker Studio'],
+  items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation', 'Tableau', 'Google Apps Script', 'Google Looker Studio', 'Retrieval-Augmented Generation (RAG)'],
 },
   {
     group: 'Databases & Infrastructure',
-    items: ['MySQL (Schema Design & Query Optimization)', 'SQL Server', 'MongoDB', 'Ubuntu VPS', 'Nginx Deployment', 'phpMyAdmin'],
+    items: ['MySQL (Schema Design & Query Optimization)', 'SQL Server', 'PostgreSQL', 'MongoDB', 'Ubuntu VPS', 'Nginx Deployment', 'phpMyAdmin'],
   },
 ];
 
@@ -125,10 +125,25 @@ export const projectFilters = [
   { key: 'personal', label: 'Data Science' },
   { key: 'freelance', label: 'Freelance' },
   { key: 'instansi', label: 'Internal' },
+  { key: 'ai-agent', label: 'AI Agent' },
   { key: 'all', label: 'All' },
 ];
 
 export const projects = [
+  {
+    id: 'tkd-guidelines-rag-assistant',
+    name: 'TKD Guidelines RAG Assistant',
+    subtitle: 'Document-Grounded Q&A for TKD Disbursement Guidelines',
+    category: 'ai-agent',
+    tags: ['RAG', 'LLM', 'TREASURY'],
+    metric: '6 Guidelines, 198 Passages Indexed',
+    description:
+      'Answers questions about regional transfer fund (TKD) disbursement guidelines directly from the official technical guidance documents. Splits the PDFs into passages, embeds them with the Gemini API, retrieves the closest matches from PostgreSQL with pgvector, and has the model answer only from those excerpts, citing the document and page. Built with an Angular front end and a Node.js API.',
+    stack: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'pgvector', 'Gemini API', 'Docker'],
+    size: 'lg',
+    url: 'https://www.linkedin.com/in/pratamadimaas/',
+    linkLabel: 'Available on Request',
+  },
   {
     id: 'deviasiguard',
     name: 'DeviasiGuard',
