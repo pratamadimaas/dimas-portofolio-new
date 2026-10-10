@@ -145,6 +145,20 @@ export const projects = [
     linkLabel: 'Available on Request',
   },
   {
+  id: 'rasengan-hand-gesture-effect',
+  name: 'Rasengan',
+  subtitle: 'Real-Time Hand Gesture Energy Effect with Computer Vision',
+  category: 'personal',
+  tags: ['COMPUTER VISION', 'REAL-TIME', 'PYTHON'],
+  metric: 'Two-Hand Tracking, 3 Quality Presets, Fully Tested',
+  description:
+    'Turns webcam hand movements into a live energy-ball effect. Closing a fist and opening it again summons a glowing sphere in the palm that follows the hand, with particles and bloom lighting layered on top. Hand landmarks come from MediaPipe, a One Euro filter smooths the jitter, and a gesture state machine decides when the effect charges, fires, and fades. Tracking runs on a separate thread to keep the video smooth, with a debug overlay and low, medium, and high quality presets. About 2,100 lines of Python covered by a pytest suite.',
+  stack: ['Python', 'MediaPipe', 'OpenCV', 'NumPy', 'Pytest', 'Ruff'],
+  size: 'md',
+  url: 'https://www.linkedin.com/in/pratamadimaas/',
+  linkLabel: 'Available on Request',
+},
+  {
     id: 'deviasiguard',
     name: 'DeviasiGuard',
     subtitle: 'Budget Deviation Analytics & WhatsApp Dispatch Engine',
