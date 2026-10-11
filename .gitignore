@@ -22,3 +22,6 @@ yarn-error.log*
 .vscode
 .DS_Store
 Thumbs.db
+# Claude Code skills (local tooling, not part of the site)
+.claude/
+skills-lock.json
