@@ -31,18 +31,22 @@ export const coreStack = [
 export const stackMatrix = [
   {
     group: 'Backend',
+    about: 'The part users never see: logins, business rules, and the connections between apps, databases, and WhatsApp.',
     items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)', 'LLM API Integration'],
   },
   {
     group: 'Frontend',
+    about: 'What people actually click and read: web pages, forms, and dashboards that work on any screen.',
     items: ['React.js', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
   },
  {
   group: 'Data & Automation',
+  about: 'Turning spreadsheets and reports into automatic checks, finished documents, and charts, so routine work takes minutes.',
   items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation', 'Tableau', 'Google Apps Script', 'Google Looker Studio', 'Retrieval-Augmented Generation (RAG)'],
 },
   {
     group: 'Databases & Infrastructure',
+    about: 'Where the data is stored and where the apps run online, on servers I set up and maintain myself.',
     items: ['MySQL (Schema Design & Query Optimization)', 'SQL Server', 'PostgreSQL', 'MongoDB', 'Ubuntu VPS', 'Nginx Deployment', 'phpMyAdmin'],
   },
 ];
