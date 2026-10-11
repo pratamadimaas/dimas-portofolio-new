@@ -62,6 +62,26 @@ export default function AboutSection() {
             {identity.summary}
           </p>
 
+          <ol className="mt-8 max-w-xl border-l border-titanium-border dark:border-obsidian-border">
+            {identity.path.map((step, i) => {
+              const last = i === identity.path.length - 1;
+              return (
+                <li key={step.year} className="relative grid grid-cols-[3.5rem_1fr] gap-3 pl-5 pb-5 last:pb-0">
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -left-[4.5px] top-[7px] h-2 w-2 rounded-full ${
+                      last ? 'bg-engine' : 'bg-titanium-muted dark:bg-obsidian-muted'
+                    }`}
+                  />
+                  <span className={`font-mono text-sm pt-px ${last ? 'text-engine' : 'text-titanium-muted dark:text-obsidian-muted'}`}>
+                    {step.year}
+                  </span>
+                  <p className="text-sm md:text-base leading-relaxed">{step.text}</p>
+                </li>
+              );
+            })}
+          </ol>
+
           <dl className="mt-10 divide-y divide-titanium-border dark:divide-obsidian-border border-t border-titanium-border dark:border-obsidian-border max-w-xl">
             {facts.map((f) => (
               <div key={f.term} className="grid grid-cols-[7rem_1fr] gap-4 py-4">

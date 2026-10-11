@@ -8,7 +8,15 @@ export const identity = {
   tagline:
     'I build automation tools and dashboards that turn manual treasury reporting into fast, reliable processes.',
   summary:
-    'Self-taught. It started with Excel VBA to speed up my own reports, grew into Python and web apps, and now includes machine learning on treasury data. Since 2019 I have worked in four treasury offices across Banten, Maluku, Jakarta and Southeast Sulawesi, and most of what I build starts with a problem I met at one of those desks.',
+    'I liked maths and logic long before I wrote any code. The road from there took a detour through accounting, and that detour is why I build what I build.',
+  // Rendered as a short timeline in the About section.
+  path: [
+    { year: '2014', text: 'Science track at SMA Negeri 1 Purworejo. Maths and logic were the favourite subjects.' },
+    { year: '2017', text: 'A year of Informatics at UNS. First programs in C, Java, and Python.' },
+    { year: '2018', text: 'Moved to PKN STAN for state finance: accounting, management, economics, and a lot of Excel.' },
+    { year: '2022', text: 'Back to code, self-taught. Python first, then PHP and Laravel, then React, Express, and Angular, with Udemy courses along the way.' },
+    { year: '2024', text: 'At KPPN Kolaka the side projects turned into tools the office and its spending units use every week.' },
+  ],
   credential:
   'D3 Manajemen Aset Alih Program graduate of Politeknik Keuangan Negara STAN, now an Information Systems student at Universitas Siber Asia, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
@@ -450,7 +458,7 @@ export const education = [
     program: 'Asset Management (D3)',
     title: 'Politeknik Keuangan Negara STAN',
     role: 'D3 Manajemen Aset Alih Program (Associate Degree Conversion Track, Asset Management)',
-    detail: 'Graduated with a 3.76 GPA. Focus on business valuation, government accounting, and state asset management. Also when programming came back into the picture, practised alongside coursework.',
+    detail: 'Graduated with a 3.76 GPA. Focus on business valuation, government accounting, and state asset management. Programming came back in this period, self-taught alongside coursework.',
   },
   {
     period: '2018 - 2019',
@@ -464,7 +472,7 @@ export const education = [
     program: 'Informatics',
     title: 'Universitas Sebelas Maret',
     role: 'Informatics',
-    detail: 'Admitted through SBMPTN. One year of algorithms, data structures, C, and Python (3.56 GPA) before moving to PKN STAN.',
+    detail: 'Admitted through SBMPTN. One year of algorithms, data structures, C, Java, and Python (3.56 GPA) before moving to PKN STAN.',
   },
   {
     period: '2014 - 2017',
