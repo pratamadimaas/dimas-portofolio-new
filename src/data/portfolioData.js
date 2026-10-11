@@ -14,7 +14,7 @@ export const identity = {
     { year: '2014', text: 'Science track at SMA Negeri 1 Purworejo. Maths and logic were the favourite subjects.' },
     { year: '2017', text: 'A year of Informatics at UNS. First programs in C, Java, and Python.' },
     { year: '2018', text: 'Moved to PKN STAN for state finance: accounting, management, economics, and a lot of Excel.' },
-    { year: '2022', text: 'Back to code, self-taught. Python first, then PHP and Laravel, then React, Express, and Angular, with Udemy courses along the way.' },
+    { year: '2022', text: 'Back at PKN STAN for a D3 in Asset Management (3.76 GPA): business valuation, government accounting, and state assets. Code came back on the side, self-taught: Python first, then PHP and Laravel, then React, Express, and Angular, with Udemy courses along the way.' },
     { year: '2024', text: 'At KPPN Kolaka the side projects turned into tools the office and its spending units use every week.' },
   ],
   credential:
