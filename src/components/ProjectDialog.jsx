@@ -61,7 +61,7 @@ export default function ProjectDialog({ project, onClose }) {
 
             {project.metric && (
               <div className="mt-8 border-l-2 border-engine pl-4">
-                <p className="label-mono">Outcome</p>
+                <p className="label-mono">Highlight</p>
                 <p className="mt-1 font-display text-lg font-semibold leading-snug">{project.metric}</p>
               </div>
             )}
