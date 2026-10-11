@@ -11,7 +11,7 @@ export default {
           surface: '#0c0c0e',
           border: 'rgba(255,255,255,0.07)',
           text: '#f4f4f5',
-          muted: '#71717a',
+          muted: '#82828b', // 5.1:1 on surface, passes WCAG AA
         },
         // Light — "Architectural Blueprint / Clean Titanium"
         titanium: {
@@ -23,30 +23,17 @@ export default {
           muted: '#64748b',
         },
         // Shared accents
-        engine: '#22c55e', // emerald status engine
-        pulse: '#3b82f6',  // cobalt data pulse
+        engine: '#22c55e', // emerald, the single accent color
       },
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
-      },
-      backgroundImage: {
-        'blueprint-grid':
-          'linear-gradient(to right, rgba(15,23,42,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.05) 1px, transparent 1px)',
-        'noir-grid':
-          'linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px)',
-      },
-      backgroundSize: {
-        grid: '40px 40px',
+        display: ['"Geist Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Geist Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
       },
       transitionTimingFunction: {
         industrial: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       keyframes: {
-        'ping-soft': {
-          '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
-        },
         blink: {
           '0%, 49%': { opacity: '1' },
           '50%, 100%': { opacity: '0' },
@@ -57,7 +44,6 @@ export default {
         },
       },
       animation: {
-        'ping-soft': 'ping-soft 2.2s cubic-bezier(0,0,0.2,1) infinite',
         blink: 'blink 1s step-end infinite',
         marquee: 'marquee linear infinite',
       },

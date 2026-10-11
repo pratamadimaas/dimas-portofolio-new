@@ -10,23 +10,14 @@
 
   html.dark body {
     @apply bg-obsidian-bg text-obsidian-text;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 44px 44px;
   }
 
   html.light body {
     @apply bg-titanium-bg text-titanium-text;
-    background-image:
-      linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
-    background-size: 44px 44px;
   }
 
   body {
     @apply font-body antialiased;
-    font-feature-settings: 'ss01' 1, 'cv01' 1;
   }
 
   h1, h2, h3, h4 {
@@ -86,4 +77,32 @@
   .label-mono {
     @apply font-mono text-[11px] tracking-wide text-titanium-muted dark:text-obsidian-muted;
   }
+
+  .project-dialog::backdrop {
+    background: rgba(5, 5, 7, 0.6);
+    backdrop-filter: blur(4px);
+    animation: dialog-fade 0.25s ease-out;
+  }
+
+  .project-dialog[open] {
+    animation: dialog-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (min-width: 640px) {
+    .project-dialog[open] {
+      animation-name: dialog-in;
+    }
+  }
+}
+
+@keyframes dialog-fade {
+  from { opacity: 0; }
+}
+
+@keyframes dialog-up {
+  from { transform: translateY(100%); }
+}
+
+@keyframes dialog-in {
+  from { transform: translateX(100%); }
 }

@@ -1,71 +1,58 @@
 import { motion } from 'framer-motion';
-import { Eye } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { certificates } from '../data/portfolioData';
-import SplitText from './SplitText';
 
 export default function CertificatesSection() {
   return (
-    <section id="certificates" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-12 max-w-2xl"
-      >
-        <span className="label-mono text-engine">CREDENTIALS</span>
-        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
-          <SplitText text="Certificates & Continued Learning" />
+    <section id="certificates" className="px-6 md:px-10 max-w-6xl mx-auto py-20 md:py-24">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+          Certificates
         </h2>
-        <p className="mt-3 text-titanium-muted dark:text-obsidian-muted">
-          Ongoing formal training to back the practical skills built across projects above.
-        </p>
-      </motion.div>
+        <p className="label-mono">{certificates.length} completed courses</p>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <ul className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8">
         {certificates.map((cert, i) => {
-          const viewHref = cert.pdfUrl || cert.imageUrl;
-          const viewLabel = cert.pdfUrl ? 'View PDF' : 'View Image';
-
+          const href = cert.pdfUrl || cert.imageUrl;
           return (
-            <motion.div
+            <motion.li
               key={cert.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group surface rounded-2xl overflow-hidden flex flex-col"
+              transition={{ duration: 0.45, delay: (i % 4) * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="aspect-[4/3] overflow-hidden border-b border-titanium-border dark:border-obsidian-border bg-titanium-bg2 dark:bg-black/20">
-                <img
-                  src={cert.imageUrl}
-                  alt={cert.title}
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-industrial"
-                />
-              </div>
-
-              <div className="p-6 flex flex-col flex-1 bg-transparent">
-                <p className="label-mono">{cert.issuer}</p>
-                <h3 className="mt-1.5 text-base font-semibold leading-snug">{cert.title}</h3>
-
-                {viewHref && (
-                  <a
-                    href={viewHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto pt-4 flex items-center gap-1.5 text-xs text-titanium-muted dark:text-obsidian-muted hover:text-engine transition-colors duration-200 w-fit"
-                  >
-                    <Eye size={13} />
-                    <span className="label-mono normal-case underline underline-offset-2 decoration-dotted">
-                      {viewLabel}
-                    </span>
-                  </a>
-                )}
-              </div>
-            </motion.div>
+              <a href={href} target="_blank" rel="noopener noreferrer" className="group block">
+                <div className="aspect-[4/3] overflow-hidden rounded-xl border border-titanium-border dark:border-obsidian-border bg-titanium-bg2 dark:bg-obsidian-surface">
+                  <img
+                    src={cert.imageUrl}
+                    alt={`${cert.title} certificate`}
+                    width="720"
+                    height="540"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-industrial group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-3 flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="label-mono">{cert.issuer}</p>
+                    <h3 className="mt-1 text-sm font-medium leading-snug line-clamp-2 group-hover:text-engine transition-colors duration-200">
+                      {cert.title}
+                    </h3>
+                  </div>
+                  <ArrowUpRight
+                    size={15}
+                    aria-hidden="true"
+                    className="mt-0.5 shrink-0 text-titanium-muted dark:text-obsidian-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </div>
+              </a>
+            </motion.li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

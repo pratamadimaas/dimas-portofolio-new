@@ -1,19 +1,27 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import ClickSpark from './ClickSpark';
+import { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 
-export default function MagneticButton({ children, onClick, href, className = '', primary = false }) {
+const spring = { stiffness: 150, damping: 12, mass: 0.4 };
+
+export default function MagneticButton({ children, onClick, href, className = '', primary = false, ...rest }) {
   const ref = useRef(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const reduceMotion = useReducedMotion();
+  // Motion values update outside React's render cycle, so tracking the cursor
+  // doesn't re-render the button on every mousemove.
+  const x = useSpring(useMotionValue(0), spring);
+  const y = useSpring(useMotionValue(0), spring);
 
   const handleMove = (e) => {
+    if (reduceMotion) return;
     const rect = ref.current.getBoundingClientRect();
-    const relX = e.clientX - rect.left - rect.width / 2;
-    const relY = e.clientY - rect.top - rect.height / 2;
-    setPos({ x: relX * 0.28, y: relY * 0.4 });
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.28);
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.4);
   };
 
-  const reset = () => setPos({ x: 0, y: 0 });
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   const Tag = href ? 'a' : 'button';
 
@@ -22,23 +30,16 @@ export default function MagneticButton({ children, onClick, href, className = ''
     : 'surface text-titanium-text dark:text-obsidian-text';
 
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: 'spring', stiffness: 150, damping: 12, mass: 0.4 }}
-      className="inline-block"
-    >
-      <ClickSpark sparkColor={primary ? '#22c55e' : '#3b82f6'} className="inline-block rounded-full">
-        <Tag
-          href={href}
-          onClick={onClick}
-          className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ease-industrial ${base} ${className}`}
-        >
-          {children}
-        </Tag>
-      </ClickSpark>
+    <motion.div ref={ref} onMouseMove={handleMove} onMouseLeave={reset} style={{ x, y }} className="inline-block">
+      <Tag
+        href={href}
+        onClick={onClick}
+        type={href ? undefined : 'button'}
+        {...rest}
+        className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ease-industrial ${base} ${className}`}
+      >
+        {children}
+      </Tag>
     </motion.div>
   );
 }

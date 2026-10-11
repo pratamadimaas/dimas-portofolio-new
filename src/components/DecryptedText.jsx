@@ -9,7 +9,7 @@ export default function DecryptedText({
   startDelay = 0,
   className = '',
 }) {
-  const [display, setDisplay] = useState(() => text.replace(/\S/g, ' '));
+  const [display, setDisplay] = useState(text);
   const revealedRef = useRef(0);
   const scrambleTimeout = useRef(null);
   const revealTimeout = useRef(null);
@@ -56,8 +56,9 @@ export default function DecryptedText({
   }, [text, speed, revealDelay, startDelay]);
 
   return (
-    <span className={className} aria-label={text}>
-      {display}
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">{display}</span>
     </span>
   );
 }

@@ -1,84 +1,92 @@
-import { motion } from 'framer-motion';
-import { identity } from '../data/portfolioData';
-import SplitText from './SplitText';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { identity, projects } from '../data/portfolioData';
+import { supportsWebGL } from '../lib/webgl';
+
+const IdBadge = lazy(() => import('./IdBadge'));
 
 const reveal = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
+// Internal systems, listed on the back of the badge.
+const builtAtWork = projects.filter((p) => p.category === 'instansi').slice(0, 5).map((p) => p.name.split(' (')[0]);
+
+const facts = [
+  { term: 'Works at', detail: 'Directorate General of Treasury, Ministry of Finance' },
+  { term: 'Based in', detail: 'Purworejo, Central Java' },
+  { term: 'Studying', detail: 'Information Systems, Universitas Siber Asia' },
+];
+
 export default function AboutSection() {
+  const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { margin: '200px' });
+  const reduceMotion = useReducedMotion();
+  const [env, setEnv] = useState({ webgl: false, fine: false });
+
+  useEffect(() => {
+    setEnv({ webgl: supportsWebGL(), fine: window.matchMedia('(pointer: fine)').matches });
+  }, []);
+
   return (
-    <section id="about" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
-      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-12 max-w-2xl">
-        <SplitText text="Where treasury operations meet software architecture" />
-      </h2>
-
-      <div className="grid md:grid-cols-3 gap-4">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          className="md:col-span-2 surface rounded-2xl p-7"
-        >
-          <p className="label-mono mb-3">DOMAIN DOSSIER</p>
-          <p className="text-base md:text-lg leading-relaxed">{identity.summary}</p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          className="surface rounded-2xl p-7 flex flex-col justify-between"
-        >
-          <div>
-            <p className="label-mono mb-3">CREDENTIAL</p>
-            <p className="text-sm leading-relaxed text-titanium-muted dark:text-obsidian-muted">
-              {identity.credential}
+    <section ref={sectionRef} id="about" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
+      <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-16 items-center">
+        <div className="relative h-[440px] sm:h-[520px] lg:h-[580px] order-last lg:order-first">
+          {env.webgl && inView && (
+            <Suspense fallback={null}>
+              <IdBadge
+                name={identity.name}
+                role="Treasury Officer, KPPN Kolaka"
+                built={builtAtWork}
+                email={identity.email}
+                photoSrc="/photo.webp"
+                draggable={env.fine && !reduceMotion}
+                animate={!reduceMotion}
+              />
+            </Suspense>
+          )}
+          {env.webgl && (
+            <p className="label-mono absolute bottom-0 inset-x-0 text-center pointer-events-none">
+              {env.fine ? 'Drag or click the card' : 'Tap the card to flip it'}
             </p>
+          )}
+        </div>
 
-            <a
-              href={identity.socials.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-xs text-titanium-muted dark:text-obsidian-muted mt-4 pt-4 border-t border-titanium-border dark:border-obsidian-border hover:text-engine transition-colors duration-200"
-            >
-              Also shares build logs and coding tutorials on TikTok (900+ followers) as Code With Dims.
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          className="surface rounded-2xl p-7"
-        >
-          <p className="label-mono mb-3">SECTOR</p>
-          <p className="text-2xl font-display font-semibold">State Treasury</p>
-          <p className="text-sm text-titanium-muted dark:text-obsidian-muted mt-1">
-            Kementerian Keuangan RI / Ditjen Perbendaharaan
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={reveal}>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+            How I got here
+          </h2>
+          <p className="mt-6 text-base md:text-lg leading-relaxed text-titanium-muted dark:text-obsidian-muted max-w-xl">
+            {identity.summary}
           </p>
-        </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          className="md:col-span-2 surface rounded-2xl p-7"
-        >
-          <p className="label-mono mb-3">ENGINEERING PHILOSOPHY</p>
-          <p className="text-sm leading-relaxed text-titanium-muted dark:text-obsidian-muted">
-            Critical transaction systems leave no room for inconsistent data. Every system I build
-            starts with strict data isolation and a clear audit trail, then automation that
-            replaces the manual process entirely rather than just speeding it up. Years inside
-            government treasury operations taught me that understanding a problem deeply matters
-            just as much as knowing how to build the solution.
-          </p>
+          <dl className="mt-10 divide-y divide-titanium-border dark:divide-obsidian-border border-t border-titanium-border dark:border-obsidian-border max-w-xl">
+            {facts.map((f) => (
+              <div key={f.term} className="grid grid-cols-[7rem_1fr] gap-4 py-4">
+                <dt className="label-mono pt-0.5">{f.term}</dt>
+                <dd className="text-sm md:text-base">{f.detail}</dd>
+              </div>
+            ))}
+            <div className="grid grid-cols-[7rem_1fr] gap-4 py-4">
+              <dt className="label-mono pt-0.5">Shares</dt>
+              <dd className="text-sm md:text-base">
+                <a
+                  href={identity.socials.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1 hover:text-engine transition-colors duration-200"
+                >
+                  Build logs and tutorials as Code With Dims
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              </dd>
+            </div>
+          </dl>
         </motion.div>
       </div>
     </section>

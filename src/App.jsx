@@ -5,7 +5,8 @@ import AboutSection from './components/AboutSection';
 import SkillsSection from './components/SkillsSection';
 import CertificatesSection from './components/CertificatesSection';
 import ProjectsSection from './components/ProjectsSection';
-import TimelineSection from './components/TimelineSection';
+import ExperienceSection from './components/ExperienceSection';
+import EducationSection from './components/EducationSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
@@ -14,14 +15,22 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <main>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-full focus:px-4 focus:py-2 focus:bg-titanium-text focus:text-titanium-bg dark:focus:bg-obsidian-text dark:focus:text-obsidian-bg"
+      >
+        Skip to content
+      </a>
+      <Navbar toggleTheme={toggleTheme} />
+      {/* Reading order: who, what he built, where, with what, how he learned, then contact. */}
+      <main id="main">
         <HeroSection isDark={isDark} />
         <AboutSection />
-        <TimelineSection />
-        <SkillsSection />
-        <CertificatesSection />
         <ProjectsSection />
+        <ExperienceSection isDark={isDark} />
+        <SkillsSection isDark={isDark} />
+        <EducationSection />
+        <CertificatesSection />
         <ContactSection />
       </main>
       <Footer />

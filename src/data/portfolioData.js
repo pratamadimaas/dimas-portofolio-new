@@ -1,19 +1,23 @@
 export const identity = {
   name: 'Muhamad Dimas Pratama',
-  role: 'Civil Servant at the Directorate General of Treasury (Ministry of Finance of Indonesia), Tech Enthusiast',
+  role: 'Treasury officer at the Ministry of Finance, Indonesia. Tech enthusiast.',
   location: 'Kolaka, Indonesia',
-  status: 'Open to Collaborative Tech Initiatives',
+  status: 'Open to freelance projects & collaboration',
   email: 'dimasmg2017@gmail.com',
+  // Short hero line; the full summary lives in the About section.
+  tagline:
+    'I build automation tools and dashboards that turn manual treasury reporting into fast, reliable processes.',
   summary:
-    'Civil servant at the Directorate General of Treasury, Ministry of Finance of Indonesia, with a self-taught passion for software engineering and data analysis on the side. Builds automation systems and monitoring dashboards that turn manual budget-compliance and reporting work into faster and easier processes.',
+    'Self-taught. It started with Excel VBA to speed up my own reports, grew into Python and web apps, and now includes machine learning on treasury data. Since 2019 I have worked in four treasury offices across Banten, Maluku, Jakarta and Southeast Sulawesi, and most of what I build starts with a problem I met at one of those desks.',
   credential:
   'D3 Manajemen Aset Alih Program graduate of Politeknik Keuangan Negara STAN, now an Information Systems student at Universitas Siber Asia, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [
-    { label: 'Treasury Audit Turnaround at KPPN Kolaka', value: 'Days Cut to Hours' },
-    { label: 'Manual Workload Eliminated Across Spending Units', value: '>80% Reduction' },
-    { label: 'Government Automation Systems Delivered', value: '6 Systems in Active Use' },
+    { value: '6', label: 'automation systems in active use' },
+    { value: '151', label: 'ledger rules checked automatically' },
+    { value: '>80%', label: 'less manual work for spending units' },
   ],
   socials: {
+    linkedin: 'https://www.linkedin.com/in/pratamadimaas/',
     instagram: 'https://www.instagram.com/pratama_dimaas/',
     tiktok: 'https://www.tiktok.com/@codewithdims15',
   },
@@ -26,15 +30,15 @@ export const coreStack = [
 ];
 export const stackMatrix = [
   {
-    group: 'Core Systems & Backend',
+    group: 'Backend',
     items: ['PHP (Laravel)', 'Python (Flask)', 'Node.js (Express)', 'RESTful APIs', 'Database-Routing Middleware', 'Docker & Containerization', 'Git & Version Control', 'Laragon', 'WhatsApp API Integration (Fonnte)', 'LLM API Integration'],
   },
   {
-    group: 'UI & Creative Engineering',
+    group: 'Frontend',
     items: ['React.js', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F', 'Interactive Analytics HUD'],
   },
  {
-  group: 'Data Intelligence & Desktop OOP',
+  group: 'Data & Automation',
   items: ['Python (Pandas, NumPy, Regex)', 'Desktop Engine (Tkinter)', 'Data Audit & Rule Validation', 'Document Automation (python-docx)', 'Excel VBA Automation', 'Tableau', 'Google Apps Script', 'Google Looker Studio', 'Retrieval-Augmented Generation (RAG)'],
 },
   {
@@ -48,75 +52,75 @@ export const certificates = [
     id: 'python-for-data-science',
     title: 'Python for Data Science and Machine Learning Bootcamp',
     issuer: 'Udemy',
-    imageUrl: '/udemy1.jpg',
+    imageUrl: '/certificates/udemy1.webp',
   },
   {
     id: 'mastering-angular',
     title: 'Mastering Angular',
     issuer: 'Udemy',
-    imageUrl: '/udemy2.jpg',
+    imageUrl: '/certificates/udemy2.webp',
   },
   {
     id: 'dicoding-ai-basics',
     title: 'Belajar Dasar AI',
     issuer: 'Dicoding',
-    imageUrl: '/Dasar%20AI.png',
+    imageUrl: '/certificates/dasar-ai.webp',
     pdfUrl: '/sertifikat_course_653_Belajar_Dasar_AI.pdf',
   },
   {
     id: 'dicoding-sql-basics',
     title: 'Belajar Dasar Structured Query Language (SQL)',
     issuer: 'Dicoding',
-    imageUrl: '/SQL.png',
+    imageUrl: '/certificates/sql.webp',
     pdfUrl: '/sertifikat_course_600_Belajar_SQL.pdf',
   },
    {
     id: 'dicoding-data-science-basics',
     title: 'Belajar Dasar Data Science',
     issuer: 'Dicoding',
-    imageUrl: '/Data%20Science.png',
+    imageUrl: '/certificates/data-science.webp',
     pdfUrl: '/sertifikat_course_615_Data_Science.pdf',
   },
   {
     id: 'dicoding-prompt-engineering',
     title: 'Prompt Engineering untuk Software Developer',
     issuer: 'Dicoding',
-    imageUrl: '/prompt_engineering.png',
+    imageUrl: '/certificates/prompt-engineering.webp',
     pdfUrl: '/sertifikat_course_753_prompt_engineering.pdf',
   },
   {
     id: 'dicoding-data-visual',
     title: 'Belajar Dasar Visualisasi Data',
     issuer: 'Dicoding',
-    imageUrl: '/data_visual.png',
+    imageUrl: '/certificates/data-visual.webp',
     pdfUrl: '/sertifikat_course_177_Visualisasi_Data.pdf',
   },
   {
     id: 'dicoding-python',
     title: 'Memulai Pemrograman dengan Python',
     issuer: 'Dicoding',
-    imageUrl: '/python.png',
+    imageUrl: '/certificates/python.webp',
     pdfUrl: '/sertifikat_course_86_Python.pdf',
   },
     {
     id: 'dicoding-dasar-react',
     title: 'Belajar Membuat Aplikasi Web dengan React',
     issuer: 'Dicoding',
-    imageUrl: '/dasar_react.png',
+    imageUrl: '/certificates/dasar-react.webp',
     pdfUrl: '/sertifikat_course_403_Membuat_Aplikasi_React.pdf',
   },
     {
     id: 'dicoding-dasar-express',
     title: 'Belajar Back-End Pemula dengan JavaScript',
     issuer: 'Dicoding',
-    imageUrl: '/backend_javascript.png',
+    imageUrl: '/certificates/backend-javascript.webp',
     pdfUrl: '/sertifikat_course_261_Belajar Back-End_JavaScript.pdf',
   },
     {
     id: 'dicoding-fundamental-react',
     title: 'Belajar Fundamental Aplikasi Web dengan React',
     issuer: 'Dicoding',
-    imageUrl: '/react_fundamental.png',
+    imageUrl: '/certificates/react-fundamental.webp',
     pdfUrl: '/sertifikat_course_413_Fundamental_React.pdf',
   },
 ];
@@ -187,6 +191,7 @@ export const projects = [
 },
   {
     id: 'si-caput',
+    image: '/projects/si-caput.webp',
     name: 'SI-CAPUT 2026',
     subtitle: 'Asisten Diagnostik Capaian Output Satker',
     category: 'instansi',
@@ -241,6 +246,7 @@ export const projects = [
   },
   {
     id: 'cleardraft',
+    image: '/projects/cleardraft.webp',
     name: 'ClearDraft',
     subtitle: 'Self-Serve Document Generation SaaS',
     category: 'freelance',
@@ -281,6 +287,7 @@ export const projects = [
 },
 {
   id: 'anagram-project',
+  image: '/projects/anagram-project.webp',
   name: 'Anagram Project',
   subtitle: 'Data, Programming & AI Learning Platform',
   category: 'freelance',
@@ -294,6 +301,7 @@ export const projects = [
 },
 {
   id: 'taksir-rumah',
+  image: '/projects/taksir-rumah.webp',
   name: 'Taksir Rumah',
   subtitle: 'House Price Prediction & Market Analytics Dashboard',
   category: 'personal',
@@ -310,6 +318,7 @@ export const projects = [
 },
   {
   id: 'football-player-clustering',
+  image: '/projects/football-player-clustering.webp',
   name: 'Football Player Archetype Clustering',
   subtitle: 'Unsupervised Tactical Style Classification, Europe Top 5 Leagues',
   category: 'personal',
@@ -370,87 +379,94 @@ export const projects = [
 },
 ];
 
+// Treasury offices on the career map (ExperienceSection). lon/lat in degrees.
+export const offices = {
+  serang: { city: 'Serang', region: 'Banten', lon: 106.15, lat: -6.12, labelSide: 'left' },
+  masohi: { city: 'Masohi', region: 'Maluku', lon: 128.97, lat: -3.3 },
+  jakarta: { city: 'Jakarta', region: 'DKI Jakarta', lon: 106.83, lat: -6.17 },
+  kolaka: { city: 'Kolaka', region: 'Southeast Sulawesi', lon: 121.6, lat: -4.05 },
+};
+
 export const experience = [
   {
-    period: 'Sep 2026 — Present',
+    period: 'Sep 2026 - Present',
+    location: 'kolaka',
     title: 'KPPN Kolaka',
     role: 'Bank Staff',
-    detail: 'Handling Financial Advisor consultations and transfer-to-region (TKD) fund disbursement, processing SPP and SPM for transfer funds, managing treasury bank accounts, and administering third-party calculation (PFK) and UMi financing data. Continues developing Excel VBA automation for the section\'s quarterly reporting.',
-    badge: 'Current Assignment',
+    detail: "Moved from customer service to the bank section. Handles regional transfer fund (TKD) disbursement, treasury bank accounts, and UMi financing data, and advises spending units on payment requests. Still building Excel VBA automation for the section's quarterly reports.",
   },
   {
-    period: 'Nov 2024 — Sep 2026',
+    period: 'Nov 2024 - Sep 2026',
+    location: 'kolaka',
     title: 'KPPN Kolaka',
     role: 'Customer Service Officer',
     detail: 'Managed spending unit consultations, resolved core system operations (SAKTI/MyIntress), and built DeviasiGuard and SI-CAPUT, two systems that turn printed MyIntress Excel exports into monitoring dashboards for budget deviation and output achievement.',
-    badge: 'Prior Assignment',
   },
   {
-    period: 'Sep 2024 — Oct 2024',
+    period: 'Sep 2024 - Oct 2024',
+    location: 'jakarta',
     title: 'Sekretariat Direktorat Jenderal Perbendaharaan',
     role: 'On-the-Job Training (Re-Entry Program)',
-    detail: 'Strategic onboarding and high-level treasury operations alignment following full-time study assignment.',
-    badge: 'HQ Assignment',
+    detail: 'Short re-entry training at the DG Treasury Secretariat after the study assignment, before returning to a regional office.',
   },
   {
-    period: 'Aug 2022 — Sep 2024',
+    period: 'Aug 2022 - Sep 2024',
+    location: 'jakarta',
     title: 'Sekretariat Direktorat Jenderal Perbendaharaan',
     role: 'Tugas Belajar (Ministry-Funded Scholarship)',
-    detail: 'Administratively home-based at the DG Treasury Secretariat while on a fully Ministry of Finance-funded tugas belajar, returning to PKN STAN for the D3 Manajemen Aset Alih Program, an Associate Degree conversion track in Asset Management.',
-    badge: 'HQ Assignment',
+    detail: 'Fully funded study assignment (tugas belajar) from the Ministry of Finance to complete the D3 Asset Management conversion program at PKN STAN, administratively based at the DG Treasury Secretariat.',
   },
   {
-    period: 'Sep 2020 — Aug 2022',
+    period: 'Sep 2020 - Aug 2022',
+    location: 'masohi',
     title: 'KPPN Masohi',
     role: 'General Affairs & Household Staff',
-    detail: 'Handled procurement and payment workflows, office logistics and protocol, Public Information Disclosure (KIP) services, and social media, while monitoring infrastructure readiness.',
-    badge: 'Regional Deployment',
+    detail: "Ran procurement and payments, office logistics and protocol, public information requests (KIP), and the office's social media.",
   },
-{
-  period: 'Dec 2019 — Aug 2020',
-  title: 'KPPN Serang',
-  role: 'Bank Staff',
-  detail:
-    'Supported government treasury payment operations, with a focus on PPR recording and returned payment (retur) processing. Reviewed SP2D and beneficiary data, identified payment discrepancies, coordinated data corrections with spending units, and supported the reprocessing of returned funds through the treasury system.',
-  badge: 'On The Job Training',
-},
+  {
+    period: 'Dec 2019 - Aug 2020',
+    location: 'serang',
+    title: 'KPPN Serang',
+    role: 'Bank Staff',
+    detail: 'Processed returned treasury payments (retur): checked SP2D and beneficiary data, traced the mismatch, and worked with spending units to fix it before the funds were paid out again.',
+  },
 ];
 
 
 export const education = [
   {
-    period: '2026 — 2027',
+    period: '2026 - 2027',
+    program: 'Information Systems (S1)',
     title: 'Universitas Siber Asia',
     role: 'Bachelor’s Student in Information Systems',
-    detail: 'Currently pursuing a bachelor\'s degree in Information Systems part-time alongside full-time work, deepening formal grounding in business intelligence, data mining, artificial intelligence, and enterprise systems architecture.',
-    badge: 'Higher Education',
+    detail: 'Part-time bachelor\'s degree taken alongside full-time work, covering business intelligence, data mining, artificial intelligence, and enterprise systems.',
   },
   {
-    period: '2022 — 2024',
+    period: '2022 - 2024',
+    program: 'Asset Management (D3)',
     title: 'Politeknik Keuangan Negara STAN',
     role: 'D3 Manajemen Aset Alih Program (Associate Degree Conversion Track, Asset Management)',
-    detail: 'Graduated with a 3.76 GPA specializing in business valuation, government financial accounting, and state asset optimization. It was also during this period that programming re-entered the picture, self-driven coding practice alongside formal coursework became the seed of the full-stack engineering path that followed.',
-    badge: 'Study Assignment',
+    detail: 'Graduated with a 3.76 GPA. Focus on business valuation, government accounting, and state asset management. Also when programming came back into the picture, practised alongside coursework.',
   },
   {
-    period: '2018 — 2019',
+    period: '2018 - 2019',
+    program: 'State Treasury (D1)',
     title: 'Politeknik Keuangan Negara STAN',
-    role: 'Diploma 1 — State Treasury',
+    role: 'Diploma 1 - State Treasury',
     detail: 'Graduated with a 3.50 GPA. Completed foundational training in state budget cycles, fund disbursement, and public cash management.',
-    badge: 'Foundational Academy',
   },
   {
-    period: '2017 — 2018',
+    period: '2017 - 2018',
+    program: 'Informatics',
     title: 'Universitas Sebelas Maret',
     role: 'Informatics',
-    detail: 'Admitted through SBMPTN. Spent one deeply engaged year here building a foundation in algorithms, data structures, C, and Python (3.56 GPA) before leaving to pursue an opportunity at PKN STAN.',
-    badge: 'Foundational CS',
+    detail: 'Admitted through SBMPTN. One year of algorithms, data structures, C, and Python (3.56 GPA) before moving to PKN STAN.',
   },
   {
-    period: '2014 — 2017',
+    period: '2014 - 2017',
+    program: 'Science & Mathematics',
     title: 'SMA Negeri 1 Purworejo',
     role: 'Natural Sciences & Mathematics (MIPA)',
-    detail: 'Developed a strong personal draw toward mathematics and logic, the analytical instinct that would later carry directly into algorithmic thinking and systems design.',
-    badge: 'Secondary Education',
+    detail: 'Natural sciences and mathematics track, where the interest in maths and logic began.',
   },
 ];
