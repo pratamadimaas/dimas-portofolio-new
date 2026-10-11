@@ -15,7 +15,7 @@ export const identity = {
     { year: '2017', text: 'One year of Informatics at UNS. Learned the basics of coding in C, Java, and Python.' },
     { year: '2018', text: 'Moved to PKN STAN to study state treasury. Accounting, economics, and a lot of Excel.' },
     { year: '2022', text: 'Back at PKN STAN for D3 Asset Management (GPA 3.76). Started coding again on my own: programming logic, Python, PHP, and Laravel.' },
-    { year: '2024', text: 'Posted to KPPN Kolaka. Learned React, Angular, Express, MongoDB, and machine learning, and started building apps for the office.' },
+    { year: '2024', text: 'Started working at KPPN Kolaka. Learned React, Angular, Express, MongoDB, and machine learning, and started building apps for the office.' },
     { year: '2026', text: "Started a bachelor's degree in Information Systems at Universitas Siber Asia to strengthen the basics. Also taking courses and learning a lot about AI agents." },
   ],
   credential:
