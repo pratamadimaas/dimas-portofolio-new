@@ -12,8 +12,8 @@ export const identity = {
   // Rendered as a short timeline in the About section.
   path: [
     { year: '2014', text: 'SMA Negeri 1 Purworejo, science track. Maths and logic were my favourite subjects.' },
-    { year: '2017', text: 'One year of Informatics at UNS. My first C, Java, and Python.' },
-    { year: '2018', text: 'The detour. I moved to PKN STAN to study state treasury: accounting, how the state budget (APBN) is managed, and how it is carried out. Most of that work lived in Excel.', turning: true },
+    { year: '2017', text: 'One year of Informatics at Sebelas Maret University (Admitted by SBMPTN). My first year of basic programming in C, Java, and Python.' },
+    { year: '2018', text: 'The detour. I moved to PKN STAN to study state treasury for another opportunity: accounting, how the state budget (APBN) is managed, and how it is carried out. Most of that work lived in Excel.', turning: true },
     { year: '2020', text: 'Hands-on work at the office: fixing PCs and printers, and helping with state property (BMN) records and auctions. This was where I learned how things actually get run.' },
     { year: '2022', text: 'Back at STAN for the D3 in Asset Management (GPA 3.76). Coding came back on my own terms: programming logic, Python, PHP, and Laravel.' },
     { year: '2024', text: 'Started at KPPN Kolaka and met real problems worth solving. Built monitoring tools for the office, and learned React, Angular, MongoDB, and machine learning along the way.' },
