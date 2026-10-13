@@ -1,9 +1,11 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Copy, Check, Download } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 import MagneticButton from './MagneticButton';
 import DecryptedText from './DecryptedText';
+import { useIntroPhase } from '../lib/intro';
+import { useNearViewport } from '../hooks/useNearViewport';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
@@ -22,6 +24,11 @@ const item = {
 export default function HeroSection({ isDark }) {
   const [copied, setCopied] = useState(false);
   const [show3D, setShow3D] = useState(false);
+  // The hero arrives after the intro loader, not behind it.
+  const arrived = useIntroPhase() !== 'running';
+  // The scene is unmounted once the hero is well out of view, so it never counts against the canvas budget.
+  const sceneRef = useRef(null);
+  const sceneNear = useNearViewport(sceneRef);
 
   // The 3D scene is decoration. Start it on the visitor's first interaction, or a few
   // seconds after load, so building it never competes with the page becoming usable.
@@ -64,7 +71,7 @@ export default function HeroSection({ isDark }) {
   return (
     <section id="top" className="relative pt-28 md:pt-32 pb-20 px-6 md:px-10 max-w-6xl mx-auto">
       <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-        <motion.div variants={container} initial="hidden" animate="show">
+        <motion.div variants={container} initial="hidden" animate={arrived ? 'show' : 'hidden'}>
           <motion.h1
             className="text-[2.6rem] leading-[1.05] sm:text-5xl md:text-6xl font-semibold tracking-tight text-balance"
           >
@@ -111,12 +118,13 @@ export default function HeroSection({ isDark }) {
         </motion.div>
 
         <motion.div
+          ref={sceneRef}
           initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={arrived ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="relative h-[320px] md:h-[420px]"
         >
-          {show3D && (
+          {show3D && sceneNear && (
             <Suspense fallback={null}>
               <HeroScene isDark={isDark} className="w-full h-full" />
             </Suspense>

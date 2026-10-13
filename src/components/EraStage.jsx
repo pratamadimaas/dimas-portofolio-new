@@ -568,8 +568,11 @@ function makePath() {
 
 const _v = new THREE.Vector3();
 
-function Stage({ scrollRef, animate = true }) {
-  const { camera } = useThree();
+const FOV = 32;
+const FIT_WIDTH = 3.6; // world units that must stay visible across the canvas in portrait
+
+function Stage({ scrollRef, animate = true, compact = false }) {
+  const { camera, size } = useThree();
   const groups = useRef([]);
   const state = useRef({ last: [] });
   const head = useRef();
@@ -646,8 +649,18 @@ function Stage({ scrollRef, animate = true }) {
     // Camera travels along the path: eased by the damped f, with a slight yaw and dolly per era.
     const camX = ex(f);
     const dolly = animate ? 0.7 * (0.5 + 0.5 * Math.cos(2 * Math.PI * f)) : 0;
-    camera.position.set(camX - 1.6, 1.0 + (animate ? Math.sin(f * 1.3) * 0.15 : 0), 11.5 - dolly);
-    camera.lookAt(camX + 0.8, -0.1, 0);
+    const bob = animate ? Math.sin(f * 1.3) * 0.15 : 0;
+    if (compact) {
+      // Portrait: the object sits centred. Pull the camera in or back so FIT_WIDTH always fits the
+      // canvas width (re-evaluated every frame, so resize and rotation are covered).
+      const aspect = size.width / Math.max(1, size.height);
+      const dist = THREE.MathUtils.clamp(FIT_WIDTH / aspect / (2 * Math.tan((FOV * Math.PI) / 360)), 5.5, 16);
+      camera.position.set(camX, 0.8 + bob, dist - dolly * 0.3);
+      camera.lookAt(camX, -0.05, 0);
+    } else {
+      camera.position.set(camX - 1.6, 1.0 + bob, 11.5 - dolly);
+      camera.lookAt(camX + 0.8, -0.1, 0);
+    }
     camera.updateMatrixWorld();
 
     // Publish where each milestone sits on screen so the DOM cards can anchor to it.
@@ -679,19 +692,27 @@ function Stage({ scrollRef, animate = true }) {
   );
 }
 
-export default function EraStageCanvas({ scrollRef, animate = true, frameloop = 'always' }) {
+export default function EraStageCanvas({ scrollRef, animate = true, frameloop = 'always', compact = false, onContextLost }) {
   return (
     <Canvas
-      dpr={[1, 1.5]}
+      dpr={[1, compact ? 1.25 : 1.75]}
       frameloop={frameloop}
-      camera={{ position: [ex(0) - 1.6, 1.0, 11.5], fov: 32 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
+      camera={{ position: [ex(0) - 1.6, 1.0, 11.5], fov: FOV }}
+      gl={{ antialias: !compact, alpha: true, powerPreference: 'low-power' }}
+      style={{ touchAction: 'pan-y' }}
+      onCreated={({ gl }) => {
+        // Losing the context is not recoverable here: hand over to the vertical timeline.
+        gl.domElement.addEventListener('webglcontextlost', (e) => {
+          e.preventDefault();
+          onContextLost?.();
+        });
+      }}
       aria-hidden="true"
     >
       <ambientLight intensity={1.0} />
       <directionalLight position={[2, 3, 5]} intensity={1.6} />
       <directionalLight position={[-3, 1, -4]} intensity={0.6} />
-      <Stage scrollRef={scrollRef} animate={animate} />
+      <Stage scrollRef={scrollRef} animate={animate} compact={compact} />
     </Canvas>
   );
 }

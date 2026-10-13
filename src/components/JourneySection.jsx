@@ -1,9 +1,9 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { useInView, useReducedMotion } from 'framer-motion';
 import { useNearViewport } from '../hooks/useNearViewport';
 import { Building2, Cpu, Landmark, Laptop, Sigma, Terminal, Wrench } from 'lucide-react';
 import { identity } from '../data/portfolioData';
-import { supportsWebGL } from '../lib/webgl';
+import { useCanRender3D } from '../hooks/useCanRender3D';
 import SectionHeading from './SectionHeading';
 
 const EraStage = lazy(() => import('./EraStage'));
@@ -16,12 +16,19 @@ const eraIcons = [Sigma, Terminal, Landmark, Wrench, Laptop, Building2, Cpu];
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 
 function useEnv() {
-  const [env, setEnv] = useState({ ready: false, webgl: false, wide: false });
+  const [env, setEnv] = useState({ ready: false, stacked: false, landscapePhone: false });
   const [tabVisible, setTabVisible] = useState(true);
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
-    const read = () => setEnv({ ready: true, webgl: supportsWebGL(), wide: mq.matches });
+    // Stacked = scene on top, text card below (phones and any portrait screen).
+    const mq = window.matchMedia('(max-width: 767px), (orientation: portrait)');
+    const read = () =>
+      setEnv({
+        ready: true,
+        stacked: mq.matches,
+        // A phone on its side is too short for either layout, so it keeps the vertical timeline.
+        landscapePhone: !mq.matches && Math.min(window.screen.width, window.screen.height) < 600,
+      });
     const onVisibility = () => setTabVisible(!document.hidden);
     read();
     onVisibility();
@@ -38,14 +45,19 @@ function useEnv() {
 
 /* ---------- Immersive: sticky full-viewport stage, scroll moves the camera along the path ---------- */
 
-function Immersive({ tabVisible }) {
+function Immersive({ tabVisible, stacked, onContextLost }) {
   const wrapRef = useRef(null);
   const stageRef = useRef(null);
   const fillRef = useRef(null);
   const cardRefs = useRef([]);
   const shared = useRef({ f: 0, fs: 0, sx: [], sy: [] });
   const inView = useNearViewport(wrapRef);
+  // Strictly on screen (no margin): the canvas stops rendering as soon as the section leaves.
+  const onScreen = useInView(wrapRef);
   const [active, setActive] = useState(0);
+  // On phones the scene goes idle (frameloop demand) a few seconds after scrolling stops.
+  const [awake, setAwake] = useState(true);
+  const sleepTimer = useRef(0);
 
   // Native scroll only: progress is read from where the tall container sits in the viewport.
   useEffect(() => {
@@ -55,20 +67,26 @@ function Immersive({ tabVisible }) {
       const el = wrapRef.current;
       if (!el) return;
       const r = el.getBoundingClientRect();
-      const range = Math.max(1, r.height - window.innerHeight);
+      // The sticky stage is 100svh tall, so the range does not jump when a mobile address bar moves.
+      const range = Math.max(1, r.height - (stageRef.current?.clientHeight ?? window.innerHeight));
       const f = clamp01(-r.top / range) * LAST;
       shared.current.f = f;
       setActive(Math.round(f));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(compute);
+      setAwake(true);
+      clearTimeout(sleepTimer.current);
+      sleepTimer.current = setTimeout(() => setAwake(false), 4000);
     };
     compute();
+    sleepTimer.current = setTimeout(() => setAwake(false), 4000);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      clearTimeout(sleepTimer.current);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -86,6 +104,13 @@ function Immersive({ tabVisible }) {
         const sx = s.sx[i];
         if (sx === undefined) return;
         const o = clamp01(1 - (Math.abs(i - s.fs) - 0.3) / 0.7);
+        if (stacked) {
+          // One card slot below the scene: a sharper fade so neighbouring cards never overlap.
+          const so = clamp01(1 - (Math.abs(i - s.fs) - 0.15) / 0.3);
+          el.style.opacity = so.toFixed(3);
+          el.style.transform = `translate3d(0, ${((1 - so) * 12).toFixed(1)}px, 0)`;
+          return;
+        }
         el.style.opacity = o.toFixed(3);
         el.style.transform = `translate3d(${((sx * 0.5 + 0.5) * width).toFixed(1)}px, ${(1 - o) * (i % 2 ? 12 : -12)}px, 0)`;
       });
@@ -94,27 +119,29 @@ function Immersive({ tabVisible }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView]);
+  }, [inView, stacked]);
 
   const goTo = useCallback((i) => {
     const el = wrapRef.current;
     if (!el) return;
     const top = window.scrollY + el.getBoundingClientRect().top;
-    const range = el.offsetHeight - window.innerHeight;
+    const range = el.offsetHeight - (stageRef.current?.clientHeight ?? window.innerHeight);
     window.scrollTo({ top: top + (i / LAST) * range, behavior: 'smooth' });
   }, []);
 
+  const frameloop = !tabVisible || !onScreen ? 'never' : stacked && !awake ? 'demand' : 'always';
+
   return (
-    <div ref={wrapRef} className="relative h-[360vh]">
-      <div ref={stageRef} className="sticky top-0 h-screen overflow-hidden">
+    <div ref={wrapRef} className="relative h-[360svh]">
+      <div ref={stageRef} className="sticky top-0 h-[100svh] overflow-hidden">
         {inView && (
           <div
             role="img"
             aria-label="A glowing path with seven small illustrations, one per stage of the timeline: school maths, first code, the treasury detour, office repairs and state property, Laravel, office tools, and report automation. The camera follows the path as you scroll."
-            className="pointer-events-none absolute inset-0"
+            className={`pointer-events-none absolute inset-x-0 top-0 ${stacked ? 'h-[52svh]' : 'h-full'}`}
           >
             <Suspense fallback={null}>
-              <EraStage scrollRef={shared} animate frameloop={tabVisible ? 'always' : 'demand'} />
+              <EraStage scrollRef={shared} animate frameloop={frameloop} compact={stacked} onContextLost={onContextLost} />
             </Suspense>
           </div>
         )}
@@ -129,10 +156,14 @@ function Immersive({ tabVisible }) {
                 key={step.year}
                 ref={(el) => (cardRefs.current[i] = el)}
                 style={{ opacity: 0 }}
-                className={`absolute left-0 w-0 ${top ? 'top-28 flex-col' : 'bottom-28 flex-col-reverse'} flex items-center`}
+                className={
+                  stacked
+                    ? 'absolute inset-x-4 top-[calc(52svh+0.5rem)]'
+                    : `absolute left-0 w-0 ${top ? 'top-28 flex-col' : 'bottom-28 flex-col-reverse'} flex items-center`
+                }
               >
                 <div
-                  className={`w-[min(320px,78vw)] shrink-0 rounded-xl border px-4 py-3 backdrop-blur-md ${
+                  className={`${stacked ? 'w-full' : 'w-[min(320px,78vw)] shrink-0'} rounded-xl border px-4 py-3 backdrop-blur-md ${
                     turning
                       ? 'border-amber-600/50 dark:border-amber-400/50 bg-amber-50/85 dark:bg-[#1a1408]/80'
                       : 'border-titanium-border dark:border-obsidian-border bg-white/80 dark:bg-obsidian-surface/80'
@@ -156,7 +187,7 @@ function Immersive({ tabVisible }) {
                 </div>
                 <span
                   aria-hidden="true"
-                  className={`h-8 w-px ${
+                  className={`h-8 w-px ${stacked ? 'hidden' : ''} ${
                     turning ? 'bg-amber-600/60 dark:bg-amber-400/60' : 'bg-emerald-700/50 dark:bg-engine/50'
                   }`}
                 />
@@ -319,7 +350,8 @@ function VerticalTimeline() {
 export default function JourneySection() {
   const reduceMotion = useReducedMotion();
   const { env, tabVisible } = useEnv();
-  const immersive = env.ready && env.webgl && env.wide && !reduceMotion;
+  const { ready, ok, onContextLost } = useCanRender3D();
+  const immersive = env.ready && ready && ok && !env.landscapePhone && !reduceMotion;
 
   return (
     <section id="journey" className="relative">
@@ -329,7 +361,7 @@ export default function JourneySection() {
           {identity.summary}
         </p>
       </div>
-      {immersive ? <Immersive tabVisible={tabVisible} /> : <VerticalTimeline />}
+      {immersive ? <Immersive tabVisible={tabVisible} stacked={env.stacked} onContextLost={onContextLost} /> : <VerticalTimeline />}
     </section>
   );
 }

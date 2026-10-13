@@ -70,6 +70,17 @@
 }
 
 @layer components {
+  /* Intro loader: the monogram strokes draw in (pathLength is normalised to 1). */
+  .intro-stroke {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: intro-draw 700ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  html[data-intro='seen'] #intro {
+    display: none;
+  }
+
   .surface {
     @apply bg-white dark:bg-obsidian-surface border border-titanium-border dark:border-obsidian-border;
   }
@@ -114,4 +125,10 @@
 
 @keyframes dialog-in {
   from { transform: translateX(100%); }
+}
+
+@keyframes intro-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

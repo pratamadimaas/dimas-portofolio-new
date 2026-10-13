@@ -55,6 +55,20 @@
     </script>
 
     <script>
+      // Return visits in the same session skip the intro: hide its overlay before first paint.
+      try {
+        if (sessionStorage.getItem('portfolio-intro-seen') === '1') document.documentElement.dataset.intro = 'seen';
+      } catch (e) {}
+      // Slow network: if the app has not taken over the overlay by 1.45 s, drop it so it never covers the page for longer.
+      setTimeout(function () {
+        if (window.__introStarted) return;
+        document.documentElement.dataset.intro = 'seen';
+        try { sessionStorage.setItem('portfolio-intro-seen', '1'); } catch (e) {}
+      }, 1450);
+    </script>
+    <noscript><style>#intro { display: none; }</style></noscript>
+
+    <script>
       // Anti-FOUC: resolve theme before first paint.
       (function () {
         try {
