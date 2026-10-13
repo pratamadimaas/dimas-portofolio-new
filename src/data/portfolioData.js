@@ -12,12 +12,13 @@ export const identity = {
   // Rendered as a short timeline in the About section.
   path: [
     { year: '2014', text: 'SMA Negeri 1 Purworejo, science track. Maths and logic were my favourite subjects.' },
-    { year: '2017', text: 'One year of Informatics at UNS. Learned the basics of coding in C, Java, and Python.' },
-    { year: '2018', text: 'Moved to PKN STAN to study state treasury. Accounting, economics, and a lot of Excel.' },
-    { year: '2022', text: 'Back at PKN STAN for D3 Asset Management (GPA 3.76). Started coding again on my own: programming logic, Python, PHP, and Laravel.' },
-    { year: '2024', text: 'Started working at KPPN Kolaka. Learned React, Angular, Express, MongoDB, and machine learning, and started building apps for the office.' },
-    { year: '2026', text: "Started a bachelor's degree in Information Systems at Universitas Siber Asia to strengthen the basics. Also taking courses and learning a lot about AI agents." },
+    { year: '2017', text: 'One year of Informatics at UNS. My first C, Java, and Python.' },
+    { year: '2018', text: 'The detour. I moved to PKN STAN to study state treasury. Coding paused, and Excel became my programming language.', turning: true },
+    { year: '2022', text: 'Back at STAN for the D3 in Asset Management (GPA 3.76). Coding came back on my own terms: programming logic, Python, PHP, and Laravel.' },
+    { year: '2024', text: 'Started at KPPN Kolaka and met real problems worth solving. Built monitoring tools for the office, and learned React, Angular, MongoDB, and machine learning along the way.' },
+    { year: '2026', text: 'Moved to the Bank Section and automated the quarterly TKD report with Excel VBA. Studying Information Systems at Universitas Siber Asia.' },
   ],
+
   credential:
   'D3 Manajemen Aset Alih Program graduate of Politeknik Keuangan Negara STAN, now an Information Systems student at Universitas Siber Asia, with an earlier year studying Informatics at Universitas Sebelas Maret. Currently sharpening skills across full-stack development and machine learning.',
   telemetry: [

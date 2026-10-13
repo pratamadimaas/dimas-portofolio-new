@@ -37,7 +37,13 @@ const PALETTE = {
   },
 };
 
-const OVERVIEW = { target: new THREE.Vector3(0.1, -0.2, 0), offset: new THREE.Vector3(0, -3.4, 5.6) };
+// Overview framing: centred on the three offices, pulled back just far enough that Serang and
+// Masohi (and their labels) fit the canvas width, whatever its aspect ratio.
+const OVERVIEW_TARGET = new THREE.Vector3(-0.05, -0.2, 0);
+const OVERVIEW_DIR = new THREE.Vector3(0, -0.55, 0.84).normalize();
+const HALF_SPAN = 2.5;
+const overviewOffset = (aspect) =>
+  OVERVIEW_DIR.clone().multiplyScalar(THREE.MathUtils.clamp(HALF_SPAN / (Math.tan(THREE.MathUtils.degToRad(16)) * aspect), 2.3, 6.6));
 const CLOSE_OFFSET = new THREE.Vector3(0, -1.7, 1.6);
 const BEAM = { active: 0.26, idle: 0.1 };
 
@@ -48,7 +54,8 @@ function buildLand(rings, top, side) {
   const sideColor = new THREE.Color(side);
   const geos = rings.map((ring) => {
     const shape = new THREE.Shape(ring.map(([lon, lat]) => new THREE.Vector2(...toXY(lon, lat))));
-    const geo = new THREE.ExtrudeGeometry(shape, { depth: LAND_DEPTH, bevelEnabled: false }).toNonIndexed();
+    const extruded = new THREE.ExtrudeGeometry(shape, { depth: LAND_DEPTH, bevelEnabled: false });
+    const geo = extruded.index ? extruded.toNonIndexed() : extruded;
     const normals = geo.getAttribute('normal');
     const colors = new Float32Array(normals.count * 3);
     for (let i = 0; i < normals.count; i++) {
@@ -96,7 +103,7 @@ function Land({ colors }) {
   );
 }
 
-function Route({ stops, colors, animate }) {
+function Route({ stops, colors, animate, highlight }) {
   const curves = useMemo(
     () =>
       stops.slice(1).map((key, i) => {
@@ -124,7 +131,11 @@ function Route({ stops, colors, animate }) {
   return curves.map((_, i) => (
     <group key={i}>
       <mesh geometry={tubes[i]}>
-        <meshBasicMaterial color={colors.gold} transparent opacity={0.55} />
+        <meshBasicMaterial
+          color={colors.gold}
+          transparent
+          opacity={!highlight ? 0.55 : stops[i + 1] === highlight ? 1 : 0.3}
+        />
       </mesh>
       <mesh ref={(el) => (packets.current[i] = el)}>
         <sphereGeometry args={[0.011, 12, 12]} />
@@ -181,8 +192,8 @@ function Office({ id, active, colors, fontReady, labelScale }) {
 }
 
 function Rig({ items, progress }) {
-  const { camera } = useThree();
-  const target = useRef(OVERVIEW.target.clone());
+  const { camera, size } = useThree();
+  const target = useRef(OVERVIEW_TARGET.clone());
   const desiredTarget = useRef(new THREE.Vector3());
   const desiredCam = useRef(new THREE.Vector3());
   const positions = useMemo(() => items.map(officePos), [items]);
@@ -194,8 +205,8 @@ function Rig({ items, progress }) {
       desiredTarget.current.copy(positions[i]);
       desiredCam.current.copy(desiredTarget.current).add(CLOSE_OFFSET);
     } else {
-      desiredTarget.current.copy(OVERVIEW.target);
-      desiredCam.current.copy(OVERVIEW.target).add(OVERVIEW.offset);
+      desiredTarget.current.copy(OVERVIEW_TARGET);
+      desiredCam.current.copy(OVERVIEW_TARGET).add(overviewOffset(size.width / size.height));
     }
     const k = 1 - Math.pow(0.02, delta);
     camera.position.lerp(desiredCam.current, k);
@@ -229,14 +240,14 @@ export default function TreasuryMap({ items, activeIndex, progress, isDark, anim
     <Canvas
       frameloop={animate ? 'always' : 'demand'}
       dpr={[1, 1.5]}
-      camera={{ position: OVERVIEW.target.clone().add(OVERVIEW.offset).toArray(), fov: 32 }}
+      camera={{ position: OVERVIEW_TARGET.clone().add(overviewOffset(2.3)).toArray(), fov: 32 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
       aria-hidden="true"
     >
       <ambientLight intensity={isDark ? 0.9 : 1.4} />
       <directionalLight position={[-2, -3, 5]} intensity={isDark ? 1.8 : 1.2} />
       <Land colors={colors} />
-      <Route stops={stops} colors={colors} animate={animate} />
+      <Route stops={stops} colors={colors} animate={animate} highlight={activeOffice} />
       {Object.keys(offices).map((id) => (
         <Office
           key={id}
@@ -244,7 +255,7 @@ export default function TreasuryMap({ items, activeIndex, progress, isDark, anim
           active={!activeOffice || activeOffice === id}
           colors={colors}
           fontReady={fontReady}
-          labelScale={progress ? 1 : 2}
+          labelScale={progress ? 1 : 1}
         />
       ))}
       <Rig items={items} progress={progress} />

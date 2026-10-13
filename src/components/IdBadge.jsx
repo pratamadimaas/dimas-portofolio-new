@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 /*
  * Staff badge on a lanyard. Spring physics, no physics engine: the strap
@@ -164,7 +163,25 @@ function Badge({ data, photo, draggable, animate }) {
   const front = useMemo(() => frontTexture({ ...data, photo }), [data, photo]);
   const back = useMemo(() => backTexture(data), [data]);
   const strap = useMemo(strapTexture, []);
-  const body = useMemo(() => new RoundedBoxGeometry(CARD.w, CARD.h, CARD.t, 2, 0.07), []);
+  // Same corner radius as the printed texture (44px of 640), so no grey corners poke out past it.
+  const body = useMemo(() => {
+    const r = (44 / TEX.w) * CARD.w;
+    const x = -CARD.w / 2;
+    const y = -CARD.h / 2;
+    const shape = new THREE.Shape();
+    shape.moveTo(x + r, y);
+    shape.lineTo(x + CARD.w - r, y);
+    shape.quadraticCurveTo(x + CARD.w, y, x + CARD.w, y + r);
+    shape.lineTo(x + CARD.w, y + CARD.h - r);
+    shape.quadraticCurveTo(x + CARD.w, y + CARD.h, x + CARD.w - r, y + CARD.h);
+    shape.lineTo(x + r, y + CARD.h);
+    shape.quadraticCurveTo(x, y + CARD.h, x, y + CARD.h - r);
+    shape.lineTo(x, y + r);
+    shape.quadraticCurveTo(x, y, x + r, y);
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: CARD.t, bevelEnabled: false, curveSegments: 8 });
+    geo.translate(0, 0, -CARD.t / 2);
+    return geo;
+  }, []);
   useEffect(() => () => [front, back, strap, body].forEach((x) => x.dispose()), [front, back, strap, body]);
 
   // Spring state: swing (x/z around the pivot) and spin (y on the clip).

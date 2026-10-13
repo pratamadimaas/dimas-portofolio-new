@@ -74,6 +74,15 @@
     @apply bg-white dark:bg-obsidian-surface border border-titanium-border dark:border-obsidian-border;
   }
 
+  /* Accent text that stays AA on both themes: emerald-700 on light, the brand green on dark. */
+  .text-accent {
+    @apply text-emerald-700 dark:text-engine;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.14em] uppercase text-accent;
+  }
+
   .label-mono {
     @apply font-mono text-[11px] tracking-wide text-titanium-muted dark:text-obsidian-muted;
   }
