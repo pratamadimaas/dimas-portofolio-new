@@ -3,10 +3,10 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 /*
- * Era stage: six small low-poly objects, one per timeline entry, spread along a glowing path.
+ * Era stage: seven small low-poly objects, one per timeline entry, spread along a glowing path.
  * The camera travels the path with scroll; the active era lights up, past eras settle dim,
  * future eras are ghosted but outlined. scrollRef.current.f is the scroll position as a float
- * index (0 to 5). The stage writes back the damped value (fs) and each milestone's screen
+ * index (0 to 6). The stage writes back the damped value (fs) and each milestone's screen
  * position (sx, sy in NDC) so the DOM cards can anchor to it.
  */
 
@@ -231,9 +231,10 @@ const ERAS = [
   { home: [ex(0), 0.25, 0], face: 0.25, accent: TEAL, body: '#1c2a3d', body2: '#2a3b52', screens: { board: [512, 360, drawMath] } },
   { home: [ex(1), -0.3, -0.2], face: -0.25, accent: BLUE, body: '#142033', body2: '#22324a', screens: { term: [512, 300, drawTerminal] } },
   { home: [ex(2), 0.2, 0], face: 0.2, accent: AMBER, body: '#3a3326', body2: '#4a4130', screens: { sheet: [256, 192, drawSheet] } },
-  { home: [ex(3), -0.25, -0.2], face: -0.25, accent: TEAL, body: '#1d2635', body2: '#2c384c', screens: { lap: [512, 300, drawLaptop] } },
-  { home: [ex(4), 0.25, 0], face: 0.25, accent: TEAL, body: '#1a2638', body2: '#27364d', screens: { win: [256, 384, drawOffice], dash: [384, 280, drawDash] } },
-  { home: [ex(5), -0.1, -0.2], face: -0.2, accent: GREEN, body: '#14261f', body2: '#1f3a30', screens: { rep: [256, 340, drawReport] } },
+  { home: [ex(3), -0.2, -0.1], face: -0.2, accent: BLUE, body: '#16263a', body2: '#243a55', screens: {} },
+  { home: [ex(4), 0.25, 0], face: 0.25, accent: TEAL, body: '#1d2635', body2: '#2c384c', screens: { lap: [512, 300, drawLaptop] } },
+  { home: [ex(5), -0.25, -0.2], face: -0.25, accent: TEAL, body: '#1a2638', body2: '#27364d', screens: { win: [256, 384, drawOffice], dash: [384, 280, drawDash] } },
+  { home: [ex(6), 0.1, 0], face: 0.2, accent: GREEN, body: '#14261f', body2: '#1f3a30', screens: { rep: [256, 340, drawReport] } },
 ];
 
 const Ctx = createContext(null);
@@ -388,7 +389,113 @@ function Chip() {
   );
 }
 
-const OBJECTS = [MathBoard, Terminal, Treasury, LaptopEra, Office, Chip];
+/* 2020: a repair desk (open PC, printer, floating spare parts) on the right, state property (archive boxes, gavel) on the left. No text. */
+
+const DESK_X = ex(3);
+const clampTo = (v, lim) => Math.max(-lim, Math.min(lim, v));
+
+function RepairDesk() {
+  const back = useRef();
+  const front = useRef();
+  const parts = useRef([]);
+
+  useFrame(({ clock, camera }) => {
+    const t = clock.elapsedTime;
+    // Gentle parallax: far and near layers drift in opposite directions as the camera passes.
+    const rel = clampTo(camera.position.x + 1.6 - DESK_X, 3.1) / 3.1;
+    if (back.current) back.current.position.x = rel * 0.1;
+    if (front.current) front.current.position.x = -rel * 0.14;
+    // Spare parts hover slowly, as if mid-repair.
+    parts.current.forEach((el, i) => {
+      if (!el) return;
+      el.position.y = PART_HOME[i][1] + Math.sin(t * 0.7 + i * 2.1) * 0.035;
+      el.rotation.y = Math.sin(t * 0.4 + i) * 0.35;
+    });
+  });
+
+  const boxes = [
+    { p: [-0.62, -0.15, 0], s: [0.42, 0.26, 0.34], ry: 0.06 },
+    { p: [-0.6, 0.1, 0.01], s: [0.38, 0.24, 0.32], ry: -0.1 },
+    { p: [-0.63, 0.31, 0], s: [0.3, 0.18, 0.28], ry: 0.12 },
+  ];
+
+  return (
+    <group scale={0.74}>
+      {/* Desk */}
+      <P mat="body2" p={[-0.1, -0.3, 0]} s={[2.2, 0.05, 0.7]} />
+      <P mat="body" p={[-1.1, -0.48, 0]} s={[0.05, 0.3, 0.6]} />
+      <P mat="body" p={[0.9, -0.48, 0]} s={[0.05, 0.3, 0.6]} />
+      <Edge p={[-0.1, -0.3, 0]} s={[2.2, 0.05, 0.7]} />
+
+      {/* Left, far layer: archive boxes and a gavel on its block (state property and auctions) */}
+      <group ref={back}>
+        {boxes.map((b, i) => (
+          <group key={i} position={b.p} rotation={[0, b.ry, 0]}>
+            <P mat="body" s={b.s} />
+            <P mat="body2" p={[0, b.s[1] / 2 - 0.015, 0]} s={[b.s[0] + 0.02, 0.035, b.s[2] + 0.02]} />
+            <P mat="accent" p={[0, 0.01, b.s[2] / 2 + 0.004]} s={[b.s[0] * 0.4, b.s[1] * 0.32, 0.008]} />
+            <Edge s={b.s} />
+          </group>
+        ))}
+        <group position={[-1.0, -0.275, 0.12]}>
+          <P geo="cyl" mat="body2" s={[0.11, 0.035, 0.11]} />
+          <group position={[0, 0.2, 0]} rotation={[0, 0, -0.55]}>
+            <P geo="cyl" mat="accent" p={[0, 0.1, 0]} s={[0.065, 0.2, 0.065]} r={[0, 0, Math.PI / 2]} />
+            <P geo="cyl" mat="body" p={[0, -0.04, 0]} s={[0.018, 0.34, 0.018]} />
+          </group>
+        </group>
+      </group>
+
+      {/* Right: open PC unit (front side left off) and a printer */}
+      <group position={[0.62, 0.02, 0]}>
+        <P mat="body" p={[0, 0, -0.2]} s={[0.46, 0.6, 0.03]} />
+        <P mat="body" p={[0, 0.3, 0]} s={[0.46, 0.03, 0.42]} />
+        <P mat="body" p={[0, -0.28, 0]} s={[0.46, 0.03, 0.42]} />
+        <P mat="body" p={[-0.22, 0, 0]} s={[0.03, 0.6, 0.42]} />
+        <P mat="body" p={[0.22, 0, 0]} s={[0.03, 0.6, 0.42]} />
+        <P mat="body2" p={[0, 0, -0.18]} s={[0.36, 0.5, 0.012]} />
+        <P geo="cyl" mat="accent" p={[0, 0.16, -0.165]} s={[0.1, 0.012, 0.1]} r={[Math.PI / 2, 0, 0]} />
+        <P mat="body" p={[0, -0.02, -0.16]} s={[0.12, 0.12, 0.03]} />
+        <P mat="accent" p={[0.1, -0.06, -0.16]} s={[0.025, 0.2, 0.02]} />
+        <P mat="accent" p={[0.14, -0.06, -0.16]} s={[0.025, 0.2, 0.02]} />
+        <P mat="accent" p={[-0.12, -0.2, -0.16]} s={[0.1, 0.03, 0.03]} />
+        <Edge s={[0.46, 0.6, 0.42]} />
+      </group>
+      <group position={[0.1, -0.2, 0.02]}>
+        <P mat="body2" s={[0.5, 0.2, 0.38]} />
+        <P mat="body" p={[0, 0.115, -0.08]} s={[0.36, 0.01, 0.2]} />
+        <P mat="accent" p={[0, 0.0, 0.195]} s={[0.34, 0.016, 0.006]} />
+        <P mat="accent" p={[0, -0.02, 0.17]} s={[0.3, 0.008, 0.2]} r={[0.25, 0, 0]} />
+        <Edge s={[0.5, 0.2, 0.38]} />
+      </group>
+
+      {/* Near layer: spare parts floating above the PC (RAM stick, screwdriver, a short cable) */}
+      <group ref={front}>
+        <group ref={(el) => (parts.current[0] = el)} position={PART_HOME[0]} rotation={[0, 0, 0.12]}>
+          <P mat="body" s={[0.3, 0.07, 0.012]} />
+          <P mat="accent" p={[0, -0.045, 0]} s={[0.26, 0.015, 0.012]} />
+          <P mat="body2" p={[-0.05, 0.0, 0.008]} s={[0.05, 0.04, 0.006]} />
+          <P mat="body2" p={[0.07, 0.0, 0.008]} s={[0.05, 0.04, 0.006]} />
+        </group>
+        <group ref={(el) => (parts.current[1] = el)} position={PART_HOME[1]} rotation={[0, 0, -0.9]}>
+          <P geo="cyl" mat="accent" p={[0, 0.08, 0]} s={[0.032, 0.14, 0.032]} />
+          <P geo="cyl" mat="body2" p={[0, -0.07, 0]} s={[0.01, 0.2, 0.01]} />
+        </group>
+        <group ref={(el) => (parts.current[2] = el)} position={PART_HOME[2]}>
+          <P geo="cyl" mat="body2" p={[-0.12, 0, 0]} s={[0.012, 0.14, 0.012]} r={[0, 0, Math.PI / 2 - 0.5]} />
+          <P geo="cyl" mat="body2" p={[0, 0.05, 0]} s={[0.012, 0.14, 0.012]} r={[0, 0, Math.PI / 2]} />
+          <P geo="cyl" mat="body2" p={[0.12, 0, 0]} s={[0.012, 0.14, 0.012]} r={[0, 0, Math.PI / 2 + 0.5]} />
+          <P mat="accent" p={[0.2, -0.03, 0]} s={[0.05, 0.03, 0.03]} />
+          <P mat="accent" p={[-0.2, -0.03, 0]} s={[0.05, 0.03, 0.03]} />
+        </group>
+      </group>
+    </group>
+  );
+}
+
+const PART_HOME = [[0.35, 0.68, 0.22], [0.95, 0.55, 0.2], [0.65, 0.88, 0.1]];
+
+const OBJECTS = [MathBoard, Terminal, Treasury, RepairDesk, LaptopEra, Office, Chip];
 
 /* ---------- Materials: one set per era so each can fade and glow on its own ---------- */
 

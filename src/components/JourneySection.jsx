@@ -1,7 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { useNearViewport } from '../hooks/useNearViewport';
-import { Building2, Cpu, Landmark, Laptop, Sigma, Terminal } from 'lucide-react';
+import { Building2, Cpu, Landmark, Laptop, Sigma, Terminal, Wrench } from 'lucide-react';
 import { identity } from '../data/portfolioData';
 import { supportsWebGL } from '../lib/webgl';
 import SectionHeading from './SectionHeading';
@@ -11,7 +11,7 @@ const EraStage = lazy(() => import('./EraStage'));
 const path = identity.path;
 const LAST = path.length - 1;
 // One icon per timeline entry, same order as identity.path. Used by the vertical fallback.
-const eraIcons = [Sigma, Terminal, Landmark, Laptop, Building2, Cpu];
+const eraIcons = [Sigma, Terminal, Landmark, Wrench, Laptop, Building2, Cpu];
 
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 
@@ -105,12 +105,12 @@ function Immersive({ tabVisible }) {
   }, []);
 
   return (
-    <div ref={wrapRef} className="relative h-[300vh]">
+    <div ref={wrapRef} className="relative h-[360vh]">
       <div ref={stageRef} className="sticky top-0 h-screen overflow-hidden">
         {inView && (
           <div
             role="img"
-            aria-label="A glowing path with six small illustrations, one per stage of the timeline: school maths, first code, the treasury detour, Laravel, office tools, and report automation. The camera follows the path as you scroll."
+            aria-label="A glowing path with seven small illustrations, one per stage of the timeline: school maths, first code, the treasury detour, office repairs and state property, Laravel, office tools, and report automation. The camera follows the path as you scroll."
             className="pointer-events-none absolute inset-0"
           >
             <Suspense fallback={null}>
@@ -168,14 +168,14 @@ function Immersive({ tabVisible }) {
         {/* Year scrubber */}
         <nav aria-label="Timeline" className="absolute inset-x-0 bottom-4 z-20 mx-auto w-full max-w-6xl px-6 md:px-10">
           <div className="relative">
-            <div aria-hidden="true" className="absolute left-[8.333%] right-[8.333%] top-[14px] h-px bg-titanium-border dark:bg-obsidian-border" />
+            <div aria-hidden="true" className="absolute left-[7.143%] right-[7.143%] top-[14px] h-px bg-titanium-border dark:bg-obsidian-border" />
             <div
               ref={fillRef}
               aria-hidden="true"
               style={{ transform: 'scaleX(0)' }}
-              className="absolute left-[8.333%] right-[8.333%] top-[14px] h-px origin-left bg-emerald-700 dark:bg-engine"
+              className="absolute left-[7.143%] right-[7.143%] top-[14px] h-px origin-left bg-emerald-700 dark:bg-engine"
             />
-            <div className="grid grid-cols-6">
+            <div className="grid grid-cols-7">
               {path.map((step, i) => {
                 const isActive = i === active;
                 return (
