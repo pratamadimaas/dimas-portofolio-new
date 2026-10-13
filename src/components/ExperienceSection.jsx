@@ -77,55 +77,46 @@ export default function ExperienceSection({ isDark }) {
     <section ref={sectionRef} id="experience" className="px-6 md:px-10 max-w-6xl mx-auto py-24 md:py-32">
       <SectionHeading eyebrow="03 / Experience">Experience</SectionHeading>
 
-      {/* Banner map with the current role breaking out of its lower-left edge. */}
-      <div className="relative mt-10 lg:mb-44">
-        <div className="relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-2xl border border-titanium-border dark:border-obsidian-border bg-gradient-to-b from-slate-100 to-white dark:from-[#0a1322] dark:to-[#06080d]">
-          {webgl && inView && (
-            <Suspense fallback={null}>
-              <TreasuryMap
-                items={officeKeys}
-                activeIndex={focusIdx ?? 0}
-                progress={flying ? progress : null}
-                animate={!reduceMotion}
-                isDark={isDark}
-              />
-            </Suspense>
-          )}
-          <p className="label-mono pointer-events-none absolute left-4 top-4 rounded-full bg-white/70 px-3 py-1.5 backdrop-blur dark:bg-obsidian-surface/70">Treasury offices, 2019 - today</p>
-          {focused && (
-            <div className="pointer-events-none absolute bottom-4 right-4 rounded-xl bg-white/70 px-4 py-2.5 text-right backdrop-blur dark:bg-obsidian-surface/70">
-              <p className="label-mono">{focused.period}</p>
-              <p className="mt-1 font-display font-semibold">
-                {office.city}, {office.region}
-              </p>
-            </div>
-          )}
+      {/* Map on the left, roles on the right. Pointing at a role flies the map to its office. */}
+      <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-8">
+        <div className="lg:sticky lg:top-28">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-titanium-border dark:border-obsidian-border bg-gradient-to-b from-slate-100 to-white dark:from-[#0a1322] dark:to-[#06080d]">
+            {webgl && inView && (
+              <Suspense fallback={null}>
+                <TreasuryMap
+                  items={officeKeys}
+                  activeIndex={focusIdx ?? 0}
+                  progress={flying ? progress : null}
+                  animate={!reduceMotion}
+                  isDark={isDark}
+                />
+              </Suspense>
+            )}
+            <p className="label-mono pointer-events-none absolute left-4 top-4 rounded-full bg-white/70 px-3 py-1.5 backdrop-blur dark:bg-obsidian-surface/70">Treasury offices, 2019 - today</p>
+            {focused && (
+              <div className="pointer-events-none absolute bottom-4 right-4 rounded-xl bg-white/70 px-4 py-2.5 text-right backdrop-blur dark:bg-obsidian-surface/70">
+                <p className="label-mono">{focused.period}</p>
+                <p className="mt-1 font-display font-semibold">
+                  {office.city}, {office.region}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        <ul className="relative z-10 mx-4 -mt-10 lg:absolute lg:-left-8 lg:bottom-0 lg:mx-0 lg:mt-0 lg:w-[460px] lg:translate-y-[46%]">
-          <RoleCard
-            job={experience[0]}
-            index={0}
-            glass
-            selected={focusIdx === 0}
-            onHover={setHovered}
-            onSelect={toggle}
-          />
-        </ul>
+        <ol className="grid gap-3 md:gap-4">
+          {experience.map((job, i) => (
+            <RoleCard
+              key={`${job.period}-${job.role}`}
+              job={job}
+              index={i}
+              selected={focusIdx === i}
+              onHover={setHovered}
+              onSelect={toggle}
+            />
+          ))}
+        </ol>
       </div>
-
-      <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:mt-0 lg:gap-5">
-        {experience.slice(1).map((job, i) => (
-          <RoleCard
-            key={`${job.period}-${job.role}`}
-            job={job}
-            index={i + 1}
-            selected={focusIdx === i + 1}
-            onHover={setHovered}
-            onSelect={toggle}
-          />
-        ))}
-      </ol>
     </section>
   );
 }

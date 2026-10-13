@@ -693,6 +693,16 @@ function Stage({ scrollRef, animate = true, compact = false }) {
 }
 
 export default function EraStageCanvas({ scrollRef, animate = true, frameloop = 'always', compact = false, onContextLost }) {
+  // R3F releases the GL context on unmount, which also fires webglcontextlost. That is not a real
+  // loss, so it must not push the timeline into its text fallback.
+  const alive = useRef(true);
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+    };
+  }, []);
+
   return (
     <Canvas
       dpr={[1, compact ? 1.25 : 1.75]}
@@ -704,7 +714,9 @@ export default function EraStageCanvas({ scrollRef, animate = true, frameloop = 
         // Losing the context is not recoverable here: hand over to the vertical timeline.
         gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          onContextLost?.();
+          setTimeout(() => {
+            if (alive.current && gl.domElement.isConnected) onContextLost?.();
+          }, 0);
         });
       }}
       aria-hidden="true"

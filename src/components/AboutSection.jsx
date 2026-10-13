@@ -111,6 +111,8 @@ export default function AboutSection() {
               role="img"
               aria-label="Staff ID badge swinging on a lanyard. Drag it or click to flip it."
               className="absolute inset-y-0 left-1/2 w-[min(100%,640px)] -translate-x-1/2"
+              // The strap fades in from the top edge so it never ends in a hard cut on a light background.
+              style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 110px)', maskImage: 'linear-gradient(to bottom, transparent 0, #000 110px)' }}
             >
               <Suspense fallback={null}>
                 <IdBadge
