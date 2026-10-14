@@ -6,7 +6,8 @@ import { identity } from '../data/portfolioData';
 import { useCanRender3D } from '../hooks/useCanRender3D';
 import SectionHeading from './SectionHeading';
 
-const EraStage = lazy(() => import('./EraStage'));
+const loadEraStage = () => import('./EraStage');
+const EraStage = lazy(loadEraStage);
 
 const path = identity.path;
 const LAST = path.length - 1;
@@ -51,13 +52,15 @@ function Immersive({ tabVisible, stacked, onContextLost }) {
   const fillRef = useRef(null);
   const cardRefs = useRef([]);
   const shared = useRef({ f: 0, fs: 0, sx: [], sy: [] });
-  const inView = useNearViewport(wrapRef);
+  // A full viewport ahead, so the scene is built and warmed up before it is reached.
+  const inView = useNearViewport(wrapRef, { margin: '100% 0px' });
   // Strictly on screen (no margin): the canvas stops rendering as soon as the section leaves.
   const onScreen = useInView(wrapRef);
   const [active, setActive] = useState(0);
   // On phones the scene goes idle (frameloop demand) a few seconds after scrolling stops.
   const [awake, setAwake] = useState(true);
   const sleepTimer = useRef(0);
+  const widthRef = useRef(0);
 
   // Native scroll only: progress is read from where the tall container sits in the viewport.
   useEffect(() => {
@@ -91,13 +94,21 @@ function Immersive({ tabVisible, stacked, onContextLost }) {
     };
   }, []);
 
+  // Read the stage width on resize only, never per frame.
+  useEffect(() => {
+    const read = () => (widthRef.current = stageRef.current?.clientWidth ?? 0);
+    read();
+    window.addEventListener('resize', read, { passive: true });
+    return () => window.removeEventListener('resize', read);
+  }, []);
+
   // Cards follow their milestone's projected screen position and fade in as the camera approaches.
   useEffect(() => {
     if (!inView) return undefined;
     let raf = 0;
     const tick = () => {
       const s = shared.current;
-      const width = stageRef.current?.clientWidth ?? 0;
+      const width = widthRef.current;
       path.forEach((_, i) => {
         const el = cardRefs.current[i];
         if (!el) return;
@@ -163,10 +174,10 @@ function Immersive({ tabVisible, stacked, onContextLost }) {
                 }
               >
                 <div
-                  className={`${stacked ? 'w-full' : 'w-[min(320px,78vw)] shrink-0'} rounded-xl border px-4 py-3 backdrop-blur-md ${
+                  className={`${stacked ? 'w-full' : 'w-[min(320px,78vw)] shrink-0'} rounded-xl border px-4 py-3 ${
                     turning
-                      ? 'border-amber-600/50 dark:border-amber-400/50 bg-amber-50/85 dark:bg-[#1a1408]/80'
-                      : 'border-titanium-border dark:border-obsidian-border bg-white/80 dark:bg-obsidian-surface/80'
+                      ? 'border-amber-600/50 dark:border-amber-400/50 bg-amber-50/95 dark:bg-[#1a1408]/95'
+                      : 'border-titanium-border dark:border-obsidian-border bg-white/95 dark:bg-obsidian-surface/95'
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -349,6 +360,13 @@ function VerticalTimeline() {
 
 export default function JourneySection() {
   const reduceMotion = useReducedMotion();
+
+  // Fetch the scene script while the browser is idle, well before the section is reached.
+  useEffect(() => {
+    const id = 'requestIdleCallback' in window ? window.requestIdleCallback(loadEraStage, { timeout: 4000 }) : setTimeout(loadEraStage, 2000);
+    return () => ('cancelIdleCallback' in window ? window.cancelIdleCallback(id) : clearTimeout(id));
+  }, []);
+
   const { env, tabVisible } = useEnv();
   const { ready, ok, onContextLost } = useCanRender3D();
   const immersive = env.ready && ready && ok && !env.landscapePhone && !reduceMotion;

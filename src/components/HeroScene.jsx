@@ -205,7 +205,9 @@ function makeScreen(spec) {
   const ctx = canvas.getContext('2d');
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
-  tex.anisotropy = 4;
+  // Redrawn ten times a second: skipping mipmaps saves regenerating them on every upload.
+  tex.generateMipmaps = false;
+  tex.minFilter = THREE.LinearFilter;
   const draw = (t) => drawCode(ctx, t, spec);
   draw(0);
   return { tex, draw };
@@ -237,10 +239,11 @@ function makeGeometries() {
 }
 
 function makeMaterials(c, lite) {
-  const Base = lite ? THREE.MeshLambertMaterial : THREE.MeshStandardMaterial;
+  // Lambert everywhere: far cheaper to compile than the PBR material (that compile was the stall
+  // when the scene first appeared) and plenty for a flat-lit desk.
   const mk = (color, rough = 0.6, extra = {}) => {
-    const { metalness, ...rest } = extra;
-    return new Base({ color, ...rest, ...(lite ? {} : { roughness: rough, metalness: metalness ?? 0 }) });
+    const { metalness, ...rest } = extra; // eslint-disable-line no-unused-vars
+    return new THREE.MeshLambertMaterial({ color, ...rest });
   };
   const holo = (color, opacity = 0.85) =>
     new THREE.MeshBasicMaterial({ color, transparent: true, opacity, depthWrite: false });
@@ -494,7 +497,7 @@ function HoloRibbon() {
 function Scene({ isDark, animate, interactive, lite }) {
   const c = isDark ? PALETTE.dark : PALETTE.light;
   const group = useRef();
-  const { camera, size } = useThree();
+  const { camera, size, gl } = useThree();
 
   const g = useMemo(makeGeometries, []);
   const m = useMemo(() => makeMaterials(c, lite), [c, lite]);
@@ -514,9 +517,16 @@ function Scene({ isDark, animate, interactive, lite }) {
     [screens, shadow]
   );
 
+  // Warm-up: upload the textures before the first visible frame. (Not gl.compile: on this scene it
+  // fires before the instanced charts have their matrices and leaves them drawn at full size.)
+  useEffect(() => {
+    Object.values(screens).forEach((s) => gl.initTexture(s.tex));
+    gl.initTexture(shadow);
+  }, [screens, shadow, gl]);
+
   useEffect(() => {
     camera.lookAt(0, 1.15, 0);
-    camera.zoom = Math.min(1, size.width / size.height / 1.25);
+    camera.zoom = Math.min(1, size.width / size.height / 1.25) * 0.92;
     camera.updateProjectionMatrix();
   }, [camera, size]);
 
@@ -616,7 +626,7 @@ export default function HeroScene({ isDark = true, className = '' }) {
           frameloop={animate && inView && tabVisible ? 'always' : 'demand'}
           dpr={env.fine && !lite ? [1, 1.75] : [1, 1.25]}
           camera={{ position: [2.7, 3.0, 5.2], fov: 34 }}
-          gl={{ antialias: !lite, alpha: true, powerPreference: 'low-power' }}
+          gl={{ antialias: !lite, alpha: true, powerPreference: lite ? 'low-power' : 'high-performance' }}
         >
           <ambientLight intensity={isDark ? 0.55 : 1.0} />
           <directionalLight position={[4, 6, 3]} intensity={isDark ? 1.7 : 1.4} />

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useNearViewport } from '../hooks/useNearViewport';
 import { ArrowUpRight } from 'lucide-react';
 import { identity, projects } from '../data/portfolioData';
@@ -90,6 +90,8 @@ function Callout({ fact, index, reduceMotion }) {
 export default function AboutSection() {
   const sectionRef = useRef(null);
   const inView = useNearViewport(sectionRef);
+  // Only draw while the badge is actually on screen; off screen it stays mounted but idle.
+  const onScreen = useInView(sectionRef);
   const reduceMotion = useReducedMotion();
   const [env, setEnv] = useState({ webgl: false, fine: false });
 
@@ -123,6 +125,7 @@ export default function AboutSection() {
                   photoSrc="/photo.webp"
                   draggable={env.fine && !reduceMotion}
                   animate={!reduceMotion}
+                  frameloop={onScreen ? 'always' : 'never'}
                 />
               </Suspense>
             </div>

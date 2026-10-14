@@ -30,33 +30,28 @@ export default function HeroSection({ isDark }) {
   const sceneRef = useRef(null);
   const sceneNear = useNearViewport(sceneRef);
 
-  // The 3D scene is decoration. Start it on the visitor's first interaction, or a few
-  // seconds after load, so building it never competes with the page becoming usable.
+  // The 3D scene is decoration, so it never competes with the page becoming usable: the script is
+  // fetched as soon as the page has loaded, and the scene is built in an idle moment right after the
+  // intro loader leaves. That way it is ready before the visitor scrolls, instead of being built
+  // in the middle of a scroll.
   useEffect(() => {
-    const events = ['pointermove', 'pointerdown', 'scroll', 'keydown', 'touchstart'];
-    let timer;
+    if (!arrived) return undefined;
     let idleId;
-    function cleanup() {
-      events.forEach((e) => window.removeEventListener(e, start));
-      window.removeEventListener('load', arm);
-      clearTimeout(timer);
-    }
-    function start() {
-      cleanup();
-      if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(() => setShow3D(true), { timeout: 1000 });
-      else setShow3D(true);
-    }
-    function arm() {
-      events.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }));
-      timer = setTimeout(start, 4000);
-    }
+    let timer;
+    const start = () => setShow3D(true);
+    const arm = () => {
+      import('./HeroScene');
+      if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(start, { timeout: 1200 });
+      else timer = setTimeout(start, 400);
+    };
     if (document.readyState === 'complete') arm();
     else window.addEventListener('load', arm, { once: true });
     return () => {
-      cleanup();
+      window.removeEventListener('load', arm);
+      clearTimeout(timer);
       if (idleId) window.cancelIdleCallback(idleId);
     };
-  }, []);
+  }, [arrived]);
 
   const copyEmail = async () => {
     try {

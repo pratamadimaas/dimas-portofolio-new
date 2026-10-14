@@ -283,7 +283,7 @@ function Badge({ data, photo, draggable, animate }) {
   );
 }
 
-export default function IdBadge({ name, role, built, email, photoSrc, draggable, animate = true }) {
+export default function IdBadge({ name, role, built, email, photoSrc, draggable, animate = true, frameloop = 'always' }) {
   const [assets, setAssets] = useState(null);
 
   useEffect(() => {
@@ -308,9 +308,10 @@ export default function IdBadge({ name, role, built, email, photoSrc, draggable,
 
   return (
     <Canvas
-      dpr={[1, 2]}
+      frameloop={frameloop}
+      dpr={[1, 1.75]}
       camera={{ position: [0, 0, 7], fov: 32 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
+      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       aria-hidden="true"
     >
       <ambientLight intensity={1.15} />

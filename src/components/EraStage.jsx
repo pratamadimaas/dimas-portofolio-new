@@ -501,8 +501,10 @@ const OBJECTS = [MathBoard, Terminal, Treasury, RepairDesk, LaptopEra, Office, C
 
 function buildEra(spec) {
   const list = [];
+  // Lambert, not Standard: the shader compiles in a fraction of the time (this is what stalled the
+  // first frame on Windows) and costs less per pixel, and low-poly shapes do not need PBR.
   const std = (color, rough, emissive) => {
-    const mat = new THREE.MeshStandardMaterial({ color, roughness: rough, transparent: true, ...(emissive ? { emissive: color } : {}) });
+    const mat = new THREE.MeshLambertMaterial({ color, transparent: true, ...(emissive ? { emissive: color } : {}) });
     mat.userData = { base: new THREE.Color(color), glow: Boolean(emissive) };
     list.push(mat);
     return mat;
@@ -590,6 +592,20 @@ function Stage({ scrollRef, animate = true, compact = false }) {
   }, []);
   const eras = useMemo(() => ERAS.map(buildEra), []);
   const path = useMemo(makePath, []);
+  const { gl, scene } = useThree();
+
+  // Warm-up: compile shaders and upload textures now, while the canvas is still off screen, so the
+  // first visible frame does not stall on them.
+  useEffect(() => {
+    eras.forEach((e) => e.textures.forEach((t) => gl.initTexture(t)));
+    // Async where the browser supports parallel shader compilation, so it does not block the page.
+    try {
+      if (gl.compileAsync) gl.compileAsync(scene, camera).catch(() => {});
+      else gl.compile(scene, camera);
+    } catch {
+      /* compile is only an optimisation */
+    }
+  }, [eras, gl, scene, camera]);
 
   useEffect(
     () => () => {
@@ -705,10 +721,10 @@ export default function EraStageCanvas({ scrollRef, animate = true, frameloop = 
 
   return (
     <Canvas
-      dpr={[1, compact ? 1.25 : 1.75]}
+      dpr={[1, compact ? 1.25 : 1.5]}
       frameloop={frameloop}
       camera={{ position: [ex(0) - 1.6, 1.0, 11.5], fov: FOV }}
-      gl={{ antialias: !compact, alpha: true, powerPreference: 'low-power' }}
+      gl={{ antialias: !compact, alpha: true, powerPreference: compact ? 'low-power' : 'high-performance' }}
       style={{ touchAction: 'pan-y' }}
       onCreated={({ gl }) => {
         // Losing the context is not recoverable here: hand over to the vertical timeline.
