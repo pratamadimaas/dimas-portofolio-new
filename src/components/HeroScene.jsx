@@ -400,7 +400,8 @@ function HoloBars() {
 
   return (
     <group scale={0.95}>
-      <instancedMesh ref={ref} args={[g.box, m.holoGreen, BAR_BASE.length]} frustumCulled={false} />
+      {/* material goes in a prop, not args: a theme switch rebuilds the materials, and a changed args makes R3F recreate the mesh without its matrices */}
+      <instancedMesh ref={ref} args={[g.box, undefined, BAR_BASE.length]} material={m.holoGreen} frustumCulled={false} />
       <Lines pts={GRID} color={ACCENT.teal} opacity={0.3} segments />
     </group>
   );
@@ -452,7 +453,7 @@ function HoloScatter() {
 
   return (
     <group>
-      <instancedMesh ref={ref} args={[g.sph, m.holoGreen, 36]} frustumCulled={false} />
+      <instancedMesh ref={ref} args={[g.sph, undefined, 36]} material={m.holoGreen} frustumCulled={false} />
       {CLUSTERS.map(({ c, col }) => (
         <mesh key={col} geometry={g.oct} position={c} scale={0.04}>
           <meshBasicMaterial color="#ffffff" transparent opacity={0.9} />
