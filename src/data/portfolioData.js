@@ -138,6 +138,13 @@ export const certificates = [
     imageUrl: '/certificates/react-fundamental.webp',
     pdfUrl: '/sertifikat_course_413_Fundamental_React.pdf',
   },
+  {
+    id: 'dicoding-machine-learning',
+    title: 'Belajar Machine Learning Pemula',
+    issuer: 'Dicoding',
+    imageUrl: '/certificates/machine-learning.webp',
+    pdfUrl: '/sertifikat_course_184_Belajar_Machine_Learning_Pemula.pdf',
+  },
 ];
 
 export const projectFilters = [
