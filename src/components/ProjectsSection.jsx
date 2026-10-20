@@ -11,7 +11,7 @@ const FEATURED = [
   { id: 'si-caput', span: 'md:col-span-2', height: 'md:h-[360px]', alignX: 0 },
   { id: 'football-player-clustering', span: 'md:col-span-2', height: 'md:h-[240px]' },
   { id: 'taksir-rumah', span: 'md:col-span-2', height: 'md:h-[240px]' },
-  { id: 'cleardraft', span: 'md:col-span-2', height: 'md:h-[240px]' },
+  { id: 'mahir-excel', span: 'md:col-span-2', height: 'md:h-[240px]' },
 ];
 
 const featuredIds = new Set(FEATURED.map((f) => f.id));

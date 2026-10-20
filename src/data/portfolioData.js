@@ -272,6 +272,21 @@ export const projects = [
     url: 'https://cleardraft.online/',
   },
   {
+    id: 'mahir-excel',
+    image: '/projects/mahir-excel.webp',
+    name: 'Mahir Excel',
+    subtitle: 'Free Excel learning platform in Indonesian, with its own formula engine',
+    category: 'freelance',
+    tags: ['EDTECH', 'FULL-STACK', 'SPREADSHEET ENGINE'],
+    metric: '30 lessons, 54 exercises, 33 functions',
+    description:
+      'A free platform for learning Excel by doing, in Indonesian. The spreadsheet engine is written from scratch, so formulas are calculated and checked right in the browser as learners type. Includes a placement test, a 60-second Sprint mode with a leaderboard, shortcut drills, downloadable worksheets, PDF certificates, Google sign-in, and an admin panel. Built from the ground up and deployed on my own VPS with Docker and automatic HTTPS.',
+    stack: ['React.js', 'TypeScript', 'Node.js', 'Express', 'MySQL', 'Three.js', 'Docker', 'Caddy', 'Ubuntu VPS'],
+    size: 'md',
+    url: 'https://mahirexcel.online/',
+    linkLabel: 'Visit Live Site',
+  },
+  {
   id: 'whatsapp-chatbot-gateway',
   name: 'WhatsApp Auto-Reply Bot',
   subtitle: 'Numbered-menu auto replies for client questions',
