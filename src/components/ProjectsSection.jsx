@@ -5,13 +5,13 @@ import { projects, projectFilters } from '../data/portfolioData';
 import DistortImage from './DistortImage';
 import ProjectDialog from './ProjectDialog';
 
-// Bento order and sizing. Row 1: one wide + one narrow, row 2: three equal.
+// Bento order and sizing. Row 1: the two flagship projects (one wide + one narrow), row 2: three equal.
 const FEATURED = [
-  { id: 'anagram-project', span: 'md:col-span-4', height: 'md:h-[360px]', label: 'Current focus' },
-  { id: 'si-caput', span: 'md:col-span-2', height: 'md:h-[360px]', alignX: 0 },
+  { id: 'mahir-excel', span: 'md:col-span-4', height: 'md:h-[360px]' },
+  { id: 'anagram-project', span: 'md:col-span-2', height: 'md:h-[360px]', label: 'Current focus' },
+  { id: 'si-caput', span: 'md:col-span-2', height: 'md:h-[240px]', alignX: 0 },
   { id: 'football-player-clustering', span: 'md:col-span-2', height: 'md:h-[240px]' },
   { id: 'taksir-rumah', span: 'md:col-span-2', height: 'md:h-[240px]' },
-  { id: 'mahir-excel', span: 'md:col-span-2', height: 'md:h-[240px]' },
 ];
 
 const featuredIds = new Set(FEATURED.map((f) => f.id));
