@@ -68,10 +68,26 @@ export default function ProjectDialog({ project, onClose }) {
 
             <div className="mt-8">
               <p className="label-mono">Overview</p>
-              <p className="mt-2 leading-relaxed text-titanium-text/85 dark:text-obsidian-text/85">
-                {project.description}
-              </p>
+              {project.description.split('\n\n').map((para, i) => (
+                <p key={i} className="mt-2 leading-relaxed text-titanium-text/85 dark:text-obsidian-text/85">
+                  {para}
+                </p>
+              ))}
             </div>
+
+            {project.glossary?.length > 0 && (
+              <div className="mt-8">
+                <p className="label-mono">Terms used</p>
+                <dl className="mt-3 divide-y divide-titanium-border dark:divide-obsidian-border border-y border-titanium-border dark:border-obsidian-border">
+                  {project.glossary.map((g) => (
+                    <div key={g.term} className="grid gap-1 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
+                      <dt className="text-sm font-medium">{g.term}</dt>
+                      <dd className="text-sm leading-relaxed text-titanium-muted dark:text-obsidian-muted">{g.meaning}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             {project.stack?.length > 0 && (
               <div className="mt-8">
