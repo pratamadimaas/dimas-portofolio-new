@@ -8,6 +8,7 @@ import JourneySection from './components/JourneySection';
 import SkillsSection from './components/SkillsSection';
 import CertificatesSection from './components/CertificatesSection';
 import ProjectsSection from './components/ProjectsSection';
+import ServicesSection from './components/ServicesSection';
 import ExperienceSection from './components/ExperienceSection';
 import EducationSection from './components/EducationSection';
 import ContactSection from './components/ContactSection';
@@ -34,6 +35,7 @@ export default function App() {
           <AboutSection />
           <JourneySection />
           <ProjectsSection />
+        <ServicesSection />
           <ExperienceSection isDark={isDark} />
           <SkillsSection isDark={isDark} />
           <EducationSection />

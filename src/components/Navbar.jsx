@@ -7,6 +7,7 @@ import { identity } from '../data/portfolioData';
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Education', href: '#education', also: ['certificates'] },
@@ -17,7 +18,7 @@ function useActiveSection() {
   const [active, setActive] = useState(null);
 
   useEffect(() => {
-    const ids = ['about', 'projects', 'experience', 'skills', 'education', 'certificates', 'contact'];
+    const ids = ['about', 'projects', 'services', 'experience', 'skills', 'education', 'certificates', 'contact'];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     const observer = new IntersectionObserver(
       (entries) => {

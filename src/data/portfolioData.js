@@ -458,6 +458,37 @@ export const projects = [
 },
 ];
 
+// Freelance offer (ServicesSection).
+export const services = [
+  {
+    title: 'Report and document automation',
+    text: 'Reports, letters, and forms that fill themselves. I build Excel VBA workbooks, Google Apps Script tools, and small desktop apps that take raw data, calculate it, and produce the finished document.',
+    tags: ['Excel VBA', 'Google Apps Script', 'Python', 'Word templates'],
+  },
+  {
+    title: 'Web apps',
+    text: 'Custom web applications for a specific job: a tool your team uses every day, or a product you want to launch. Built from the database to the screen, and deployed on a server I can maintain for you.',
+    tags: ['React', 'Laravel', 'Node.js', 'MySQL', 'Docker'],
+  },
+  {
+    title: 'WhatsApp replies and status notifications',
+    text: 'Automatic answers to common questions, and a message to the customer or applicant each time the status of their request changes.',
+    tags: ['Fonnte API', 'Google Apps Script', 'Webhooks'],
+  },
+  {
+    title: 'Data analysis and dashboards',
+    text: 'Turning a spreadsheet or a database into answers: cleaning the data, finding the pattern, and showing it in a dashboard people can open without asking you.',
+    tags: ['Python', 'Pandas', 'Machine learning', 'Chart.js'],
+  },
+];
+
+export const serviceSteps = [
+  { title: 'Tell me the problem', text: 'Message me on LinkedIn with what you do today: the files or apps you use, how often, and what is slow or error-prone.' },
+  { title: 'Agree on the scope', text: 'I reply with questions, what I would build, and a rough timeline and price, before any work starts.' },
+  { title: 'Build and review', text: 'You see a working version early and tell me what to change while it is still cheap to change.' },
+  { title: 'Hand over', text: 'You get the finished tool, a short guide on how to use it, and the source files where we agreed on that.' },
+];
+
 // Treasury offices on the career map (ExperienceSection). lon/lat in degrees.
 export const offices = {
   serang: { city: 'Serang', region: 'Banten', lon: 106.15, lat: -6.12, labelSide: 'left' },
